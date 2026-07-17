@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Privacy Policy | Ladoo</title>
+  <meta name="description" content="The Ladoo privacy policy: what information the app collects, why, who it is shared with, and the rights and choices you have.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://ladoo.net/privacy/">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../"><img src="../assets/favicon-64.png" alt="" width="42" height="42"><span>Ladoo</span></a>
+      <nav class="site-nav" aria-label="Main">
+        <a class="nav-link" href="../#language">Lessons</a>
+        <a class="nav-link" href="../#stories">Stories</a>
+        <a class="nav-link" href="../#bhaji">Bhaji</a>
+        <a class="btn btn-small" href="https://apps.apple.com/us/app/ladoo-learn-punjabi/id6782532457" rel="noopener noreferrer">Download</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="wrap legal-body">
+      <h1>Privacy Policy</h1>
+      <p><strong>Last updated:</strong> July 7, 2026 &nbsp;&middot;&nbsp; <strong>Effective:</strong> June 24, 2026</p>
+
+      <p>Ladoo is an app for learning Punjabi, including a conversational AI tutor ("Bhaji"). This policy explains what information we collect, why we collect it, who we share it with, how long we keep it, and the choices and rights you have.</p>
+
+      <p><strong>The short version.</strong> We collect the information needed to run your account, teach you Punjabi, power the AI tutor, and process subscriptions. To transcribe your speech and generate tutor replies, we send your voice and messages to Google's speech and AI services. <strong>We do not sell your personal information, we do not show ads, and we do not track you across other apps or websites.</strong> You can delete your account and all associated data from within the app at any time.</p>
+
+      <h2 id="who">1. Who we are</h2>
+      <p>Ladoo (the "App") is operated by Yuvraj Dhamija, an individual developer ("we," "us," or "our"). We are the controller responsible for your personal information as described in this policy.</p>
+      <p>If you have any questions, requests, or complaints about your privacy, contact us at <a href="mailto:LadooSupport@gmail.com">LadooSupport@gmail.com</a>.</p>
+      <p>This policy applies to the Ladoo mobile app and its supporting backend services. It does not apply to third-party services we link to or rely on, each of which has its own privacy policy (see <a href="#subprocessors">Third-party services</a>).</p>
+
+      <h2 id="collect">2. Information we collect</h2>
+      <p>We collect the categories of information below. We only collect what we need to operate the App, and several features work without an account in a limited offline mode.</p>
+
+      <h3>a. Account &amp; identity information</h3>
+      <p>When you create an account, we collect your <strong>email address</strong> and a unique account identifier. Depending on how you sign in:</p>
+      <ul>
+        <li><strong>Email &amp; password</strong> (we store your email and a securely hashed password, handled by our authentication provider, Supabase; we never see your plaintext password).</li>
+        <li><strong>Sign in with Google</strong> (we receive your email address, name, and basic profile information from Google).</li>
+        <li><strong>Sign in with Apple</strong> (we receive your Apple account identifier and, on first sign-in, optionally your name and an email address, which may be Apple's private relay address if you choose to hide your email).</li>
+      </ul>
+      <p>You may also set or edit a <strong>display name / username</strong> shown in the App.</p>
+
+      <h3>b. Voice &amp; audio</h3>
+      <p>The voice tutor lets you speak Punjabi using your device microphone. When you record a turn, the audio is captured to a temporary file on your device, sent securely to our backend, and forwarded to Google Cloud Speech-to-Text for transcription. <strong>We do not store your raw audio recordings</strong>, the temporary file is discarded after the turn is processed. The resulting <strong>transcript</strong> (the text of what you said) is saved as part of your tutor chat history so you can review your conversations.</p>
+
+      <h3>c. AI tutor content</h3>
+      <p>When you chat with the AI tutor, we collect and store the <strong>messages you send and receive</strong> (in Gurmukhi script, romanization, and English), any <strong>corrections</strong> the tutor provides, and contextual learning data used to personalize tutoring (such as your current lesson focus, target vocabulary, and recent mistakes). To generate replies, this content is sent to Google's AI service (see <a href="#ai">Section 4</a>).</p>
+
+      <h3>d. Learning &amp; progress data</h3>
+      <p>We store your learning activity so your progress syncs across sessions, including: lessons completed and scores, words learned, experience points (XP), daily streaks, "hearts," "gems," your saved "mistake bank" (questions you answered incorrectly, kept for targeted practice), and settings such as your daily goal, learning reason, sound, and romanization preferences.</p>
+
+      <h3>e. Subscriptions &amp; purchases</h3>
+      <p>If you purchase a Ladoo Pro subscription, the transaction is processed by <strong>Apple's App Store</strong>, we never receive or store your full payment card details. To verify and activate your subscription, we store a purchase record including the product purchased, Apple's transaction identifier, your subscription/trial status and expiry date, and the verification response returned by Apple.</p>
+
+      <h3>f. Usage &amp; analytics events</h3>
+      <p>We log a limited set of product events to understand how features are used and to improve the App, for example when a lesson is started or completed, a feature such as the AI tutor or flashcards is opened, a screen is viewed, a subscription screen is viewed, a call-to-action is tapped, a purchase is started or completed, a free trial begins, or a free-tier limit is reached. These events are keyed to your account identifier (not your name or email) and are stored in our own backend and with our product-analytics provider, <strong>PostHog</strong>, which we use to measure retention and feature usage. Alongside each event, PostHog automatically records basic technical context (such as device and operating-system type, app version, and a session identifier) and derives an <strong>approximate location</strong> (such as country, region, and city) from your IP address; we use this only for product analytics, never for advertising. <strong>We have not enabled session recording or screen replay</strong>, so PostHog does not capture video-style recordings of your screen or your taps; we only log the discrete events described above. <strong>We do not use third-party advertising or cross-app tracking analytics</strong> (such as ad networks), and we do not track you across other apps or websites.</p>
+
+      <h3>g. Diagnostics &amp; crash data</h3>
+      <p>To keep the App stable, we may collect crash reports and error diagnostics through <strong>Sentry</strong>. These include technical details such as error messages, stack traces, and basic device/app context. We have configured Sentry <strong>not</strong> to send default personally identifying information (for example, your IP address is not sent), and we do not send your conversations or account email to Sentry.</p>
+
+      <h3>h. Device &amp; technical information</h3>
+      <p>When the App communicates with our backend, we and our service providers may process technical information necessary to deliver the service, such as app version, device/OS type, and network information (including your IP address, which is processed transiently for security, rate-limiting, and abuse prevention).</p>
+
+      <h3>i. Communications &amp; feedback</h3>
+      <p>If you use the in-app "Contact us" form, we collect the <strong>email address</strong> and <strong>message</strong> you provide so we can respond and improve the App. If you email us directly, we receive whatever information you include.</p>
+
+      <h3>j. Information stored only on your device</h3>
+      <p>Some information stays on your device and is not transmitted to us, including onboarding status, your daily-goal and learning-reason selections, your AI-consent choice, your romanization preference, and a local cache of completed lessons used for offline access.</p>
+
+      <h2 id="use">3. How we use information</h2>
+      <p>We use the information described above to:</p>
+      <ul>
+        <li>Create and manage your account and authenticate you;</li>
+        <li>Provide core learning features and sync your progress across sessions and devices;</li>
+        <li>Transcribe your speech and generate AI tutor responses;</li>
+        <li>Personalize tutoring based on your lessons, vocabulary, and past mistakes;</li>
+        <li>Process, verify, and manage subscriptions and free trials;</li>
+        <li>Send you service and reminder communications (such as a trial-ending email);</li>
+        <li>Respond to feedback, support requests, and messages you send us;</li>
+        <li>Maintain reliability, debug crashes, and improve the App;</li>
+        <li>Protect the service through rate-limiting, fraud prevention, and abuse detection; and</li>
+        <li>Comply with legal obligations and enforce our terms.</li>
+      </ul>
+
+      <h2 id="ai">4. AI tutor &amp; speech processing</h2>
+      <p>The AI tutor and voice features rely on Google's cloud AI and speech services:</p>
+      <ul>
+        <li><strong>Speech-to-text:</strong> your recorded audio is sent to <strong>Google Cloud Speech-to-Text</strong> to convert it into text.</li>
+        <li><strong>Tutor responses:</strong> your messages, transcripts, and learning context are sent to <strong>Google's Gemini API</strong> (Google AI / Google Cloud) to generate the tutor's replies.</li>
+        <li><strong>Text-to-speech:</strong> Punjabi text is sent to <strong>Google Cloud Text-to-Speech</strong> to produce spoken audio.</li>
+      </ul>
+      <p><strong>Please don't share sensitive personal information in the chat.</strong> Because tutor messages and voice are processed by a third-party AI service to generate responses, avoid sending sensitive details (such as financial information, government identifiers, or health information). Before you first use the AI tutor, we ask for your explicit consent to this processing, and we record the date you consented.</p>
+      <p>Your use of these features is also subject to Google's privacy terms, linked in the next section.</p>
+
+      <h2 id="subprocessors">5. Third-party services we use</h2>
+      <p>We rely on the following service providers ("subprocessors") to operate the App. Each only receives the information needed for its function, and each is governed by its own privacy policy.</p>
+      <table>
+        <tr><th>Provider</th><th>Purpose</th><th>Information involved</th><th>Privacy policy</th></tr>
+        <tr>
+          <td><strong>Supabase</strong></td>
+          <td>Authentication, database, backend functions, and hosting</td>
+          <td>Account, learning, chat, subscription, analytics, and feedback data</td>
+          <td><a href="https://supabase.com/privacy">supabase.com/privacy</a></td>
+        </tr>
+        <tr>
+          <td><strong>Google Cloud / Google AI</strong></td>
+          <td>Speech-to-Text, Text-to-Speech, and the Gemini API (AI tutor)</td>
+          <td>Voice audio, transcripts, tutor messages, and learning context</td>
+          <td><a href="https://policies.google.com/privacy">policies.google.com/privacy</a></td>
+        </tr>
+        <tr>
+          <td><strong>Google Sign-In</strong></td>
+          <td>Optional sign-in method</td>
+          <td>Email, name, basic profile</td>
+          <td><a href="https://policies.google.com/privacy">policies.google.com/privacy</a></td>
+        </tr>
+        <tr>
+          <td><strong>Apple</strong></td>
+          <td>Sign in with Apple, App Store purchases, and receipt verification</td>
+          <td>Apple account identifier, optional email/name, subscription transaction data</td>
+          <td><a href="https://www.apple.com/legal/privacy/">apple.com/legal/privacy</a></td>
+        </tr>
+        <tr>
+          <td><strong>Resend</strong></td>
+          <td>Sending transactional emails (e.g., trial-ending reminders)</td>
+          <td>Email address and minimal message content</td>
+          <td><a href="https://resend.com/legal/privacy-policy">resend.com/legal/privacy-policy</a></td>
+        </tr>
+        <tr>
+          <td><strong>Sentry</strong></td>
+          <td>Crash and error reporting (when enabled)</td>
+          <td>Error/diagnostic data; configured to exclude default PII</td>
+          <td><a href="https://sentry.io/privacy/">sentry.io/privacy</a></td>
+        </tr>
+        <tr>
+          <td><strong>PostHog</strong></td>
+          <td>Product analytics: retention and feature-usage measurement (session recording / screen replay disabled)</td>
+          <td>Product-interaction events keyed to your account identifier, basic device/app context, and approximate location derived from IP; no advertising or cross-app tracking</td>
+          <td><a href="https://posthog.com/privacy">posthog.com/privacy</a></td>
+        </tr>
+      </table>
+      <p>We may add or change subprocessors as the App evolves; we will update this policy when we do.</p>
+
+      <h2 id="sharing">6. How information is shared</h2>
+      <p>We share personal information only in these limited circumstances:</p>
+      <ul>
+        <li><strong>With the service providers above</strong>, who process data on our behalf to deliver the App;</li>
+        <li><strong>With Apple</strong>, as part of processing and verifying your subscription;</li>
+        <li><strong>For legal reasons</strong>, if required to comply with applicable law, legal process, or a lawful government request, or to protect the rights, safety, and security of our users or the public; and</li>
+        <li><strong>In a business transfer</strong>, if the App or its assets are involved in a merger, acquisition, or sale, in which case we will notify you of any change in control of your information.</li>
+      </ul>
+      <p><strong>We do not sell your personal information, and we do not share it for cross-context behavioral advertising.</strong></p>
+
+      <h2 id="transfers">7. International data transfers</h2>
+      <p>We and our service providers operate primarily in the United States, and our providers may process data in the U.S. and other countries. If you access the App from outside these regions (for example, from the EEA or UK), your information may be transferred to and processed in countries whose data-protection laws differ from those in your country. Where required, we rely on appropriate safeguards (such as the providers' standard contractual clauses) for these transfers.</p>
+
+      <h2 id="retention">8. Data retention</h2>
+      <p>We keep personal information for as long as your account is active or as needed to provide the App, then delete or anonymize it, except where a longer period is required for legal, security, or accounting reasons. Specifically:</p>
+      <ul>
+        <li><strong>Voice recordings:</strong> not retained (discarded immediately after transcription).</li>
+        <li><strong>Tutor chat history and learning progress:</strong> kept until you delete the conversation or your account.</li>
+        <li><strong>Mistake bank:</strong> automatically purged after about 30 days.</li>
+        <li><strong>Subscription records:</strong> retained as long as needed for entitlement and record-keeping.</li>
+        <li><strong>Analytics events:</strong> retained in aggregate/operational form to improve the App.</li>
+        <li><strong>Crash diagnostics (Sentry):</strong> retained per Sentry's default retention (generally around 90 days).</li>
+      </ul>
+      <p>When you delete your account, your associated records are removed from our active systems (see <a href="#rights">Your rights &amp; choices</a>).</p>
+
+      <h2 id="rights">9. Your rights &amp; choices</h2>
+      <p>You have control over your information:</p>
+      <ul>
+        <li><strong>Delete your account and data.</strong> You can permanently delete your account from within the App. This removes your profile, progress, tutor conversations, mistake bank, analytics, subscription records, and feedback from our active systems.</li>
+        <li><strong>Access &amp; correction.</strong> You can view and edit much of your profile in the App, and you may contact us to request access to or correction of your personal information.</li>
+        <li><strong>Microphone.</strong> Voice features only work if you grant microphone permission. You can revoke it anytime in your device settings; the rest of the App will still work.</li>
+        <li><strong>Notifications.</strong> You can enable or disable reminder notifications in the App or your device settings.</li>
+        <li><strong>Emails.</strong> Reminder emails include a one-click unsubscribe link, and you can opt out of email reminders in the App.</li>
+        <li><strong>AI tutor.</strong> The AI tutor is optional and requires your consent before any data is sent for processing.</li>
+      </ul>
+      <p>To make any privacy request, email <a href="mailto:LadooSupport@gmail.com">LadooSupport@gmail.com</a>. We will respond within the timeframe required by applicable law and may need to verify your identity before acting on certain requests. We will not discriminate against you for exercising your rights.</p>
+
+      <h2 id="gdpr">10. Additional information for EEA &amp; UK users (GDPR)</h2>
+      <p>If you are in the European Economic Area or the United Kingdom, you have the right to access, correct, delete, restrict, or object to our processing of your personal data, the right to data portability, and the right to withdraw consent at any time (without affecting prior processing). You also have the right to lodge a complaint with your local data-protection authority.</p>
+      <p><strong>Legal bases.</strong> We process your personal data on the following bases:</p>
+      <ul>
+        <li><strong>Performance of a contract</strong> (to provide the App, your account, and subscriptions you request);</li>
+        <li><strong>Consent</strong> (for the AI tutor's processing of your messages and voice, and for optional notifications; you may withdraw consent at any time);</li>
+        <li><strong>Legitimate interests</strong> (to secure, debug, and improve the App and prevent abuse, balanced against your rights); and</li>
+        <li><strong>Legal obligation</strong> (where we must process data to comply with the law).</li>
+      </ul>
+      <p>To exercise these rights, contact <a href="mailto:LadooSupport@gmail.com">LadooSupport@gmail.com</a>.</p>
+
+      <h2 id="ccpa">11. Additional information for California residents (CCPA/CPRA)</h2>
+      <p>If you are a California resident, you have the right to know what personal information we collect and how we use it, to request access to or deletion of your personal information, and to correct inaccurate information. You also have the right not to receive discriminatory treatment for exercising these rights.</p>
+      <p>In the past 12 months we have collected the categories of personal information described in <a href="#collect">Section 2</a> (identifiers, account and audio/communications content, commercial/subscription information, internet and device activity, and inferences used to personalize learning), for the purposes described in <a href="#use">Section 3</a>, and disclosed them to the service providers listed in <a href="#subprocessors">Section 5</a>.</p>
+      <p><strong>We do not "sell" or "share" your personal information</strong> as those terms are defined under California law, and we have not done so in the preceding 12 months.</p>
+      <p>To exercise your California rights, email <a href="mailto:LadooSupport@gmail.com">LadooSupport@gmail.com</a>. You may use an authorized agent, and we may verify your request before responding.</p>
+
+      <h2 id="security">12. Data security</h2>
+      <p>We take reasonable technical and organizational measures to protect your information, including encrypted connections (HTTPS/TLS) for data in transit, row-level security so users can only access their own records, server-side verification of subscriptions and quotas, and configuring our error-reporting tool to minimize personal data. No method of transmission or storage is completely secure, so we cannot guarantee absolute security, but we work to protect your information and to respond promptly to any issues.</p>
+
+      <h2 id="children">13. Children's privacy</h2>
+      <p>Ladoo is intended for users aged <strong>13 and older</strong> and is not directed to children under 13. We do not knowingly collect personal information from children under 13. If you believe a child under 13 has provided us personal information, please contact <a href="mailto:LadooSupport@gmail.com">LadooSupport@gmail.com</a> and we will delete it. In some regions a higher minimum age of digital consent may apply; where required, you must meet that age or have parental consent to use the App.</p>
+
+      <h2 id="permissions">14. Device permissions</h2>
+      <p>The App requests the following device permission:</p>
+      <ul>
+        <li><strong>Microphone</strong> ("Ladoo uses your microphone so you can speak Punjabi with the AI tutor."). Used only while you are recording a voice turn. The App does not request location, contacts, photos, or tracking permissions, and does not run in the background.</li>
+      </ul>
+
+      <h2 id="notifications">15. Notifications &amp; emails</h2>
+      <p><strong>Notifications.</strong> With your permission, the App can send local reminders (such as streak and practice reminders) scheduled on your device. These are local notifications, we do not collect push notification tokens or send remote push notifications.</p>
+      <p><strong>Emails.</strong> If you are on a free trial, we may send you a transactional reminder email (for example, before your trial converts) using our email provider, Resend. Every reminder email includes a one-click unsubscribe link, and you can opt out of email reminders at any time.</p>
+
+      <h2 id="changes">16. Changes to this policy</h2>
+      <p>We may update this Privacy Policy from time to time. When we make material changes, we will revise the "Last updated" date above and, where appropriate, provide additional notice within the App. Your continued use of the App after an update means you accept the revised policy.</p>
+
+      <h2 id="contact">17. Contact us</h2>
+      <p>If you have questions, requests, or concerns about this policy or your personal information, contact us at:</p>
+      <p>
+        <strong>Ladoo</strong><br>
+        Yuvraj Dhamija<br>
+        Email: <a href="mailto:LadooSupport@gmail.com">LadooSupport@gmail.com</a>
+      </p>
+      <p>This policy is governed by the laws of the State of California, United States, without regard to its conflict-of-laws principles, except where overridden by mandatory data-protection laws applicable to you.</p>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-legal">
+        <span>&copy; 2026 Ladoo Punjabi LLC. All rights reserved.</span>
+        <span><a href="../privacy/">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="../terms/">Terms of Service</a> &nbsp;&middot;&nbsp; <a href="mailto:LadooSupport@gmail.com">LadooSupport@gmail.com</a></span>
+      </div>
+    </div>
+  </footer>
+  <script src="../assets/site.js"></script>
+</body>
+</html>
