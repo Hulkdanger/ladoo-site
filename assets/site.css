@@ -1009,3 +1009,55 @@ a:hover { color: var(--brick-deep); }
   .hero-ctas .btn, .hero-ctas .chip-soon { width: 100%; justify-content: center; }
   .download-ctas .btn, .download-ctas .chip-soon { width: 100%; justify-content: center; }
 }
+
+/* in-app browser escape sheet */
+.escape {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 14px;
+  background: rgba(20, 12, 6, 0.55);
+}
+
+.escape-panel {
+  width: 100%;
+  max-width: 460px;
+  padding: 26px 22px 22px;
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--cream-raised);
+  box-shadow: 0 -10px 44px rgba(20, 12, 6, 0.32);
+}
+
+.escape-panel h2 {
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  line-height: 1.2;
+}
+
+.escape-panel p { margin: 0 0 12px; color: var(--ink-soft); }
+.escape-panel .escape-steps { font-weight: 700; color: var(--ink); }
+
+.escape-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.escape-actions .btn { flex: 1 1 auto; justify-content: center; }
+
+.btn.btn-ghost {
+  background: transparent;
+  border-color: var(--line);
+  color: var(--brick);
+  cursor: pointer;
+}
+
+.escape-url {
+  display: block;
+  margin-top: 14px;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  word-break: break-all;
+}
+
+@media (min-width: 640px) { .escape { align-items: center; } }

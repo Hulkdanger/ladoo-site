@@ -253,3 +253,106 @@
 
   targets.forEach(function (el) { io.observe(el); });
 })();
+
+/* In-app browsers (TikTok, Instagram) cannot hand off to the App Store, so we
+   route those visitors out to a real browser, which finishes the trip itself. */
+(function () {
+  "use strict";
+
+  var APP_STORE = "https://apps.apple.com/us/app/ladoo-learn-punjabi/id6782532457";
+  // ponytail: the UA is the only signal a webview gives us. These tokens can change with app updates.
+  var PREVIEW = /[?&]inapp=1(&|$)/.test(location.search); // ladoo.net/?inapp=1 previews the sheet in any browser
+  var IN_APP = PREVIEW ||
+    /BytedanceWebview|musical_ly|trill_|aweme|Instagram|FBAN|FBAV|FB_IAB/i.test(navigator.userAgent);
+
+  // Landed in a real browser via the escape link: go straight to the App Store.
+  if (!IN_APP) {
+    if (/[?&]go=app(&|$)/.test(location.search)) { location.replace(APP_STORE); }
+    return;
+  }
+
+  var ANDROID = /Android/i.test(navigator.userAgent);
+  var ESCAPE_URL = location.protocol + "//" + location.host + "/?go=app";
+  var sheet = null;
+
+  /* Escape ladder, tried in order on the Download tap. Each rung is a URL scheme the
+     webview does not own, so the OS may hand it off. A rung that no-ops leaves the page
+     visible, and we fall through to the next one. The sheet is the last resort.
+     ponytail: no way to know a rung is supported, so we probe and watch for the page
+     going hidden. Timing is the only signal available. */
+  var LADDER = ANDROID
+    ? ["intent://" + location.host + "/?go=app#Intent;scheme=https;end"]
+    : [
+        // Straight into the App Store app, skipping the browser entirely.
+        "itms-apps://apps.apple.com/us/app/ladoo-learn-punjabi/id6782532457",
+        // Undocumented but widely supported: force the URL open in Safari.
+        "x-safari-" + ESCAPE_URL
+      ];
+
+  var left = false;
+  function markLeft() { left = true; }
+  document.addEventListener("visibilitychange", function () {
+    if (document.hidden) { markLeft(); }
+  });
+  window.addEventListener("pagehide", markLeft);
+
+  function tryRung(i) {
+    if (left) { return; }              // we made it out, nothing more to do
+    if (i >= LADDER.length) { open(); return; }
+    try { location.href = LADDER[i]; } catch (e) { /* scheme rejected outright */ }
+    setTimeout(function () { tryRung(i + 1); }, 700);
+  }
+
+  function open() {
+    if (sheet) { return; }
+    sheet = document.createElement("div");
+    sheet.className = "escape";
+    sheet.innerHTML =
+      '<div class="escape-panel" role="dialog" aria-modal="true" aria-labelledby="escape-title">' +
+        '<h2 id="escape-title">Open in your browser</h2>' +
+        '<p>This in-app browser cannot open the App Store. Open Ladoo in your browser and the download page opens on its own.</p>' +
+        '<p class="escape-steps">' + (ANDROID
+          ? "Tap the menu at the top right, then Open in browser."
+          : "Tap ••• at the top right, then Open in browser.") + '</p>' +
+        '<div class="escape-actions">' +
+          '<button type="button" class="btn btn-ghost" data-copy>Copy link</button>' +
+          '<button type="button" class="btn btn-ghost" data-close>Not now</button>' +
+        '</div>' +
+        '<span class="escape-url">' + ESCAPE_URL + '</span>' +
+      '</div>';
+
+    sheet.addEventListener("click", function (e) {
+      if (e.target === sheet || e.target.hasAttribute("data-close")) { close(); }
+    });
+
+    var copy = sheet.querySelector("[data-copy]");
+    copy.addEventListener("click", function () {
+      // Clipboard is often missing or blocked in a webview, hence the visible URL to long-press.
+      var done = navigator.clipboard && navigator.clipboard.writeText(ESCAPE_URL);
+      if (!done) { copy.textContent = "Long-press the link below"; return; }
+      done.then(
+        function () { copy.textContent = "Link copied"; },
+        function () { copy.textContent = "Long-press the link below"; }
+      );
+    });
+
+    document.body.appendChild(sheet);
+    sheet.querySelector(".escape-panel").focus();
+  }
+
+  function close() {
+    if (sheet) { sheet.remove(); sheet = null; }
+  }
+
+  document.addEventListener("click", function (e) {
+    var link = e.target.closest && e.target.closest('a[href*="apps.apple.com"]');
+    if (!link) { return; }
+    e.preventDefault();
+    if (PREVIEW) { open(); return; }   // previewing the sheet, do not fire real schemes
+    tryRung(0);
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { close(); }
+  });
+})();
