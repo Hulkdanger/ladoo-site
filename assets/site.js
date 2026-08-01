@@ -289,6 +289,15 @@
         "x-safari-" + ESCAPE_URL
       ];
 
+  /* "Open in browser" hands the real browser whatever URL the webview currently shows,
+     not the one we print in the sheet. WKWebView.url follows replaceState, so stamp the
+     marker into the address bar on the Download tap and the handoff carries it. */
+  function stampUrl() {
+    if (/[?&]go=app(&|$)/.test(location.search) || !history.replaceState) { return; }
+    var q = location.search ? location.search + "&go=app" : "?go=app";
+    try { history.replaceState(null, "", location.pathname + q + location.hash); } catch (e) {}
+  }
+
   var left = false;
   function markLeft() { left = true; }
   document.addEventListener("visibilitychange", function () {
@@ -348,6 +357,7 @@
     var link = e.target.closest && e.target.closest('a[href*="apps.apple.com"]');
     if (!link) { return; }
     e.preventDefault();
+    stampUrl();
     if (PREVIEW) { open(); return; }   // previewing the sheet, do not fire real schemes
     tryRung(0);
   });
