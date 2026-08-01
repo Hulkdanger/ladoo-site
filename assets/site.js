@@ -265,9 +265,11 @@
   var IN_APP = PREVIEW ||
     /BytedanceWebview|musical_ly|trill_|aweme|Instagram|FBAN|FBAV|FB_IAB/i.test(navigator.userAgent);
 
+  var WANTS_APP = /[?&]go=app(&|$)/.test(location.search);
+
   // Landed in a real browser via the escape link: go straight to the App Store.
   if (!IN_APP) {
-    if (/[?&]go=app(&|$)/.test(location.search)) { location.replace(APP_STORE); }
+    if (WANTS_APP) { location.replace(APP_STORE); }
     return;
   }
 
@@ -289,13 +291,12 @@
         "x-safari-" + ESCAPE_URL
       ];
 
-  /* "Open in browser" hands the real browser whatever URL the webview currently shows,
-     not the one we print in the sheet. WKWebView.url follows replaceState, so stamp the
-     marker into the address bar on the Download tap and the handoff carries it. */
-  function stampUrl() {
-    if (/[?&]go=app(&|$)/.test(location.search) || !history.replaceState) { return; }
+  /* "Open in browser" hands off the URL the app recorded when the page loaded, not the
+     live one, so replaceState was invisible to it. Only a real navigation updates what
+     gets handed over, hence the reload onto ?go=app before we do anything else. */
+  function markUrl() {
     var q = location.search ? location.search + "&go=app" : "?go=app";
-    try { history.replaceState(null, "", location.pathname + q + location.hash); } catch (e) {}
+    location.replace(location.pathname + q + location.hash);
   }
 
   var left = false;
@@ -306,8 +307,7 @@
   window.addEventListener("pagehide", markLeft);
 
   function tryRung(i) {
-    if (left) { return; }              // we made it out, nothing more to do
-    if (i >= LADDER.length) { open(); return; }
+    if (left || i >= LADDER.length) { return; }   // out, or out of rungs
     try { location.href = LADDER[i]; } catch (e) { /* scheme rejected outright */ }
     setTimeout(function () { tryRung(i + 1); }, 700);
   }
@@ -357,10 +357,20 @@
     var link = e.target.closest && e.target.closest('a[href*="apps.apple.com"]');
     if (!link) { return; }
     e.preventDefault();
-    stampUrl();
     if (PREVIEW) { open(); return; }   // previewing the sheet, do not fire real schemes
-    tryRung(0);
+    if (WANTS_APP) { start(); return; }
+    markUrl();                         // reload onto ?go=app, which resumes below
   });
+
+  /* Reloaded onto ?go=app inside the webview: the user already tapped Download, so pick
+     the flow back up. The sheet goes first because the escape schemes usually fail here
+     and making it wait behind them left the user staring at nothing for over a second. */
+  if (WANTS_APP && !PREVIEW) { start(); }
+
+  function start() {
+    open();
+    tryRung(0);
+  }
 
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape") { close(); }
