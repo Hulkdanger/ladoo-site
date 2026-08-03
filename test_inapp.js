@@ -30,14 +30,18 @@ var realBrowsers = [
 webviews.forEach(function (ua) { assert.ok(IN_APP.test(ua), "should flag: " + ua); });
 realBrowsers.forEach(function (ua) { assert.ok(!IN_APP.test(ua), "should NOT flag: " + ua); });
 
-// the escape link only auto-forwards on ?go=app
-var GO = /[?&]go=app(&|$)/;
-["?go=app", "?utm_source=tiktok&go=app", "?go=app&x=1"].forEach(function (q) { assert.ok(GO.test(q)); });
-["", "?go=apple", "?ago=app"].forEach(function (q) { assert.ok(!GO.test(q)); });
+// the escape link only auto-forwards on ?go=app or ?go=play
+var GO = /[?&]go=(app|play)(&|$)/;
+["?go=app", "?utm_source=tiktok&go=app", "?go=app&x=1", "?go=play", "?go=play&x=1"].forEach(function (q) { assert.ok(GO.test(q)); });
+["", "?go=apple", "?ago=app", "?go=player"].forEach(function (q) { assert.ok(!GO.test(q)); });
 
 /* ---- flow paths, run against the real site.js ---- */
 var TIKTOK = "Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 Mobile/15E148 musical_ly_2022803040 JsSdk/2.0";
 var SAFARI = "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 Version/17.0 Mobile/15E148 Safari/604.1";
+var TIKTOK_ANDROID = "Mozilla/5.0 (Linux; Android 12; SM-G991B) AppleWebKit/537.36 Chrome/108.0.0.0 Mobile Safari/537.36 trill_2022803030 BytedanceWebview/d8a21c6";
+var CHROME_ANDROID = "Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 Chrome/120.0.0.0 Mobile Safari/537.36";
+var APP_URL = "https://apps.apple.com/us/app/ladoo-learn-punjabi/id6782532457";
+var PLAY_URL = "https://play.google.com/store/apps/details?id=com.punjabify.punjabify&hl=en_US";
 
 function run(ua, search) {
   var log = [], clicks = [], appended = [];
@@ -66,23 +70,33 @@ function run(ua, search) {
   sandbox.globalThis = sandbox;
   vm.runInNewContext(src, sandbox);
   return { log: log, sheets: appended.length,
-    click: function () {
-      var link = { hasAttribute(){return false;}, closest(sel){ return sel.indexOf("apple") > -1 ? link : null; } };
+    // href decides which store the click handler picks, exactly like the real anchors
+    click: function (href) {
+      var link = { getAttribute(){ return href; }, hasAttribute(){return false;},
+        closest(){ return link; } };
       clicks.forEach(function (f) { f({ target: link, preventDefault(){} }); });
       return { log: log, sheets: appended.length };
     } };
 }
 
-// 1. Real browser with the marker goes straight to the App Store.
-assert.deepStrictEqual(run(SAFARI, "?go=app").log, ["REPLACE https://apps.apple.com/us/app/ladoo-learn-punjabi/id6782532457"]);
+// 1. Real browser with the marker goes straight to the store that was tapped.
+assert.deepStrictEqual(run(SAFARI, "?go=app").log, ["REPLACE " + APP_URL]);
+assert.deepStrictEqual(run(CHROME_ANDROID, "?go=play").log, ["REPLACE " + PLAY_URL]);
 // 2. Real browser without it is left completely alone.
 assert.deepStrictEqual(run(SAFARI, "").log, []);
-// 3. TikTok, no marker yet: Download tap does a REAL navigation onto ?go=app, no sheet yet.
+// 3. TikTok, no marker yet: Download tap does a REAL navigation onto ?go=<store>, no sheet yet.
 var a = run(TIKTOK, ""); assert.strictEqual(a.sheets, 0, "no sheet before the tap");
-var afterTap = a.click();
-assert.deepStrictEqual(afterTap.log, ["REPLACE /?go=app"], "tap must navigate, not replaceState");
+assert.deepStrictEqual(a.click(APP_URL).log, ["REPLACE /?go=app"], "tap must navigate, not replaceState");
+var p = run(TIKTOK_ANDROID, "");
+assert.deepStrictEqual(p.click(PLAY_URL).log, ["REPLACE /?go=play"], "Play tap must mark ?go=play");
 // 4. TikTok, reloaded with the marker: sheet is up immediately AND the ladder fires.
 var b = run(TIKTOK, "?go=app");
 assert.strictEqual(b.sheets, 1, "sheet must render on load, not after the ladder times out");
-assert.deepStrictEqual(b.log, ["HREF itms-apps://apps.apple.com/us/app/ladoo-learn-punjabi/id6782532457"]);
-console.log("ok: " + (webviews.length + realBrowsers.length) + " user agents, 6 query strings, 4 flows");
+assert.deepStrictEqual(b.log, ["HREF itms-apps://" + APP_URL.slice(8)]);
+// 5. Same on Android for Play: straight into the Play app first, browser escape behind it.
+var c = run(TIKTOK_ANDROID, "?go=play");
+assert.strictEqual(c.sheets, 1, "sheet must render on load for Play too");
+assert.deepStrictEqual(c.log, ["HREF market://details?id=com.punjabify.punjabify"]);
+// 6. The store, not the device, picks the rung: an iOS webview tapping Play escapes to Safari.
+assert.deepStrictEqual(run(TIKTOK, "?go=play").log, ["HREF x-safari-https://ladoo.net/?go=play"]);
+console.log("ok: " + (webviews.length + realBrowsers.length) + " user agents, 9 query strings, 8 flows");

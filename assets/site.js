@@ -254,48 +254,58 @@
   targets.forEach(function (el) { io.observe(el); });
 })();
 
-/* In-app browsers (TikTok, Instagram) cannot hand off to the App Store, so we
-   route those visitors out to a real browser, which finishes the trip itself. */
+/* In-app browsers (TikTok, Instagram) cannot hand off to the App Store or Google Play,
+   so we route those visitors out to a real browser, which finishes the trip itself. */
 (function () {
   "use strict";
 
-  var APP_STORE = "https://apps.apple.com/us/app/ladoo-learn-punjabi/id6782532457";
+  var STORES = {
+    app: "https://apps.apple.com/us/app/ladoo-learn-punjabi/id6782532457",
+    play: "https://play.google.com/store/apps/details?id=com.punjabify.punjabify&hl=en_US"
+  };
+
   // ponytail: the UA is the only signal a webview gives us. These tokens can change with app updates.
   var PREVIEW = /[?&]inapp=1(&|$)/.test(location.search); // ladoo.net/?inapp=1 previews the sheet in any browser
   var IN_APP = PREVIEW ||
     /BytedanceWebview|musical_ly|trill_|aweme|Instagram|FBAN|FBAV|FB_IAB/i.test(navigator.userAgent);
 
-  var WANTS_APP = /[?&]go=app(&|$)/.test(location.search);
+  var WANTS = (/[?&]go=(app|play)(&|$)/.exec(location.search) || [])[1];
 
-  // Landed in a real browser via the escape link: go straight to the App Store.
+  // Landed in a real browser via the escape link: go straight to the store they tapped.
   if (!IN_APP) {
-    if (WANTS_APP) { location.replace(APP_STORE); }
+    if (WANTS) { location.replace(STORES[WANTS]); }
     return;
   }
 
   var ANDROID = /Android/i.test(navigator.userAgent);
-  var ESCAPE_URL = location.protocol + "//" + location.host + "/?go=app";
   var sheet = null;
+
+  function escapeUrl(store) {
+    return location.protocol + "//" + location.host + "/?go=" + store;
+  }
 
   /* Escape ladder, tried in order on the Download tap. Each rung is a URL scheme the
      webview does not own, so the OS may hand it off. A rung that no-ops leaves the page
      visible, and we fall through to the next one. The sheet is the last resort.
      ponytail: no way to know a rung is supported, so we probe and watch for the page
      going hidden. Timing is the only signal available. */
-  var LADDER = ANDROID
-    ? ["intent://" + location.host + "/?go=app#Intent;scheme=https;end"]
-    : [
-        // Straight into the App Store app, skipping the browser entirely.
-        "itms-apps://apps.apple.com/us/app/ladoo-learn-punjabi/id6782532457",
-        // Undocumented but widely supported: force the URL open in Safari.
-        "x-safari-" + ESCAPE_URL
-      ];
+  function ladder(store) {
+    var rungs = [];
+    // Straight into the store app, skipping the browser entirely. Only on its own OS.
+    if (store === "app" && !ANDROID) { rungs.push("itms-apps://apps.apple.com/us/app/ladoo-learn-punjabi/id6782532457"); }
+    if (store === "play" && ANDROID) { rungs.push("market://details?id=com.punjabify.punjabify"); }
+    rungs.push(ANDROID
+      ? "intent://" + location.host + "/?go=" + store + "#Intent;scheme=https;end"
+      // Undocumented but widely supported: force the URL open in Safari.
+      : "x-safari-" + escapeUrl(store));
+    return rungs;
+  }
 
   /* "Open in browser" hands off the URL the app recorded when the page loaded, not the
      live one, so replaceState was invisible to it. Only a real navigation updates what
-     gets handed over, hence the reload onto ?go=app before we do anything else. */
-  function markUrl() {
-    var q = location.search ? location.search + "&go=app" : "?go=app";
+     gets handed over, hence the reload onto ?go=<store> before we do anything else. */
+  function markUrl(store) {
+    var q = location.search ? location.search + "&go=" + store : "?go=" + store;
     location.replace(location.pathname + q + location.hash);
   }
 
@@ -306,20 +316,22 @@
   });
   window.addEventListener("pagehide", markLeft);
 
-  function tryRung(i) {
-    if (left || i >= LADDER.length) { return; }   // out, or out of rungs
-    try { location.href = LADDER[i]; } catch (e) { /* scheme rejected outright */ }
-    setTimeout(function () { tryRung(i + 1); }, 700);
+  function tryRung(rungs, i) {
+    if (left || i >= rungs.length) { return; }   // out, or out of rungs
+    try { location.href = rungs[i]; } catch (e) { /* scheme rejected outright */ }
+    setTimeout(function () { tryRung(rungs, i + 1); }, 700);
   }
 
-  function open() {
+  function open(store) {
     if (sheet) { return; }
+    var url = escapeUrl(store);
     sheet = document.createElement("div");
     sheet.className = "escape";
     sheet.innerHTML =
       '<div class="escape-panel" role="dialog" aria-modal="true" aria-labelledby="escape-title">' +
         '<h2 id="escape-title">Open in your browser</h2>' +
-        '<p>This in-app browser cannot open the App Store. Open Ladoo in your browser and the download page opens on its own.</p>' +
+        '<p>This in-app browser cannot open ' + (store === "play" ? "Google Play" : "the App Store") +
+          '. Open Ladoo in your browser and the download page opens on its own.</p>' +
         '<p class="escape-steps">' + (ANDROID
           ? "Tap the menu at the top right, then Open in browser."
           : "Tap ••• at the top right, then Open in browser.") + '</p>' +
@@ -327,7 +339,7 @@
           '<button type="button" class="btn btn-ghost" data-copy>Copy link</button>' +
           '<button type="button" class="btn btn-ghost" data-close>Not now</button>' +
         '</div>' +
-        '<span class="escape-url">' + ESCAPE_URL + '</span>' +
+        '<span class="escape-url">' + url + '</span>' +
       '</div>';
 
     sheet.addEventListener("click", function (e) {
@@ -337,7 +349,7 @@
     var copy = sheet.querySelector("[data-copy]");
     copy.addEventListener("click", function () {
       // Clipboard is often missing or blocked in a webview, hence the visible URL to long-press.
-      var done = navigator.clipboard && navigator.clipboard.writeText(ESCAPE_URL);
+      var done = navigator.clipboard && navigator.clipboard.writeText(url);
       if (!done) { copy.textContent = "Long-press the link below"; return; }
       done.then(
         function () { copy.textContent = "Link copied"; },
@@ -354,22 +366,23 @@
   }
 
   document.addEventListener("click", function (e) {
-    var link = e.target.closest && e.target.closest('a[href*="apps.apple.com"]');
+    var link = e.target.closest && e.target.closest('a[href*="apps.apple.com"], a[href*="play.google.com"]');
     if (!link) { return; }
+    var store = String(link.getAttribute("href")).indexOf("play.google.com") > -1 ? "play" : "app";
     e.preventDefault();
-    if (PREVIEW) { open(); return; }   // previewing the sheet, do not fire real schemes
-    if (WANTS_APP) { start(); return; }
-    markUrl();                         // reload onto ?go=app, which resumes below
+    if (PREVIEW) { open(store); return; }  // previewing the sheet, do not fire real schemes
+    if (WANTS) { start(WANTS); return; }
+    markUrl(store);                        // reload onto ?go=<store>, which resumes below
   });
 
-  /* Reloaded onto ?go=app inside the webview: the user already tapped Download, so pick
+  /* Reloaded onto ?go=<store> inside the webview: the user already tapped Download, so pick
      the flow back up. The sheet goes first because the escape schemes usually fail here
      and making it wait behind them left the user staring at nothing for over a second. */
-  if (WANTS_APP && !PREVIEW) { start(); }
+  if (WANTS && !PREVIEW) { start(WANTS); }
 
-  function start() {
-    open();
-    tryRung(0);
+  function start(store) {
+    open(store);
+    tryRung(ladder(store), 0);
   }
 
   document.addEventListener("keydown", function (e) {

@@ -191,28 +191,16 @@ a:hover { color: var(--brick-deep); }
   box-shadow: 0 10px 24px rgba(20, 12, 6, 0.3);
 }
 
-.chip-soon {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 15px 26px;
-  border-radius: 999px;
-  border: 2px solid var(--line);
-  color: var(--ink-soft);
-  font-weight: 700;
-  font-size: 1rem;
-  line-height: 1;
+.btn.btn-outline {
   background: transparent;
+  border-color: var(--brick);
+  color: var(--brick);
 }
 
-.chip-soon svg { width: 18px; height: 18px; fill: currentColor; opacity: 0.75; }
-
-.chip-soon small {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  color: var(--sage);
+.btn.btn-outline:hover {
+  background: var(--brick);
+  border-color: var(--brick);
+  color: var(--cream-raised);
 }
 
 /* ---------- hero ---------- */
@@ -840,8 +828,9 @@ a:hover { color: var(--brick-deep); }
 
 .download-ctas { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; align-items: center; }
 
-.download .chip-soon { border-color: rgba(246, 238, 220, 0.4); color: var(--cream-deep); }
-.download .chip-soon small { color: var(--cream-deep); }
+/* the download panel sits on brick, so the outline flips to cream */
+.download .btn.btn-outline { border-color: rgba(246, 238, 220, 0.55); color: var(--cream); }
+.download .btn.btn-outline:hover { background: var(--cream); border-color: var(--cream); color: var(--brick-deep); }
 
 /* ---------- footer ---------- */
 
@@ -1006,8 +995,8 @@ a:hover { color: var(--brick-deep); }
 @media (max-width: 480px) {
   body { font-size: 1rem; }
   .stats .wrap { grid-template-columns: 1fr 1fr; }
-  .hero-ctas .btn, .hero-ctas .chip-soon { width: 100%; justify-content: center; }
-  .download-ctas .btn, .download-ctas .chip-soon { width: 100%; justify-content: center; }
+  .hero-ctas .btn { width: 100%; justify-content: center; }
+  .download-ctas .btn { width: 100%; justify-content: center; }
 }
 
 /* in-app browser escape sheet */
