@@ -9,6 +9,8 @@
   --brick: #a63d2a;
   --brick-deep: #86301f;
   --sage: #67784e;
+  --sage-deep: #56643f;  /* AA against cream text, unlike --sage at 4.4:1 */
+  --sage-deeper: #455033;
   --gold: #dfae45;
   --line: #e3d5b8;
   --radius: 20px;
@@ -191,16 +193,19 @@ a:hover { color: var(--brick-deep); }
   box-shadow: 0 10px 24px rgba(20, 12, 6, 0.3);
 }
 
-.btn.btn-outline {
-  background: transparent;
-  border-color: var(--brick);
-  color: var(--brick);
+/* Google Play. Same weight as the App Store button on purpose: hue is the only
+   difference, so neither platform reads as the primary one. */
+.btn.btn-play {
+  background: var(--sage-deep);
+  border-color: var(--sage-deep);
+  color: var(--cream-raised);
 }
 
-.btn.btn-outline:hover {
-  background: var(--brick);
-  border-color: var(--brick);
+.btn.btn-play:hover {
+  background: var(--sage-deeper);
+  border-color: var(--sage-deeper);
   color: var(--cream-raised);
+  box-shadow: 0 10px 24px rgba(69, 80, 51, 0.3);
 }
 
 /* ---------- hero ---------- */
@@ -828,9 +833,8 @@ a:hover { color: var(--brick-deep); }
 
 .download-ctas { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; align-items: center; }
 
-/* the download panel sits on brick, so the outline flips to cream */
-.download .btn.btn-outline { border-color: rgba(246, 238, 220, 0.55); color: var(--cream); }
-.download .btn.btn-outline:hover { background: var(--cream); border-color: var(--cream); color: var(--brick-deep); }
+/* the panel is brick, so the sage pill takes a cream hairline to lift off it */
+.download .btn.btn-play { border-color: rgba(246, 238, 220, 0.5); }
 
 /* ---------- footer ---------- */
 
