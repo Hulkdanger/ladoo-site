@@ -416,16 +416,13 @@
       window.posthog.init("phc_y8gjtgzFiT5segFLfxqPx73qeXxg8VnDSXSfWaJa9TqL", {
         api_host: "https://us.i.posthog.com",
         defaults: "2025-05-24",
-        capture_pageview: true,
-        loaded: function (ph) {
-          /* array.js loads async, usually after the window load event; the
-             SDK's own initial-pageview hook never fires in that state. If the
-             document is still loading, the SDK's hook will handle it. */
-          if (document.readyState === "complete" && !ph._initialPageviewCaptured) {
-            ph.capture("$pageview");
-          }
-        }
+        /* array.js loads async, after the window load event, and in that state
+           the SDK never fires the initial pageview on its own (verified against
+           prod Aug 7 2026). Auto-capture is off; the line below is the one
+           pageview per page load. */
+        capture_pageview: false
       });
+      window.posthog.capture("$pageview");
     }
   };
   document.head.appendChild(s);
