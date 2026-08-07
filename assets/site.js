@@ -415,7 +415,10 @@
     if (window.posthog && window.posthog.init) {
       window.posthog.init("phc_y8gjtgzFiT5segFLfxqPx73qeXxg8VnDSXSfWaJa9TqL", {
         api_host: "https://us.i.posthog.com",
-        defaults: "2025-05-24"
+        defaults: "2025-05-24",
+        /* array.js loads after the document is complete, and in that state the
+           default history_change mode never fires the initial pageview. */
+        capture_pageview: true
       });
     }
   };
