@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self' https://us-assets.i.posthog.com; connect-src 'self' https://us.i.posthog.com https://us-assets.i.posthog.com; media-src 'self' https://ilcwcghgeialtwnnpapl.supabase.co; font-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
   <title>Ladoo | Learn Punjabi: speaking, Gurmukhi, and stories</title>
-  <meta name="description" content="Ladoo teaches you to speak, read, and understand Punjabi. Bite-size lessons, a full Gurmukhi script track, illustrated stories, and Bhaji, an AI speaking tutor that listens. Built for the diaspora.">
-  <meta name="keywords" content="learn Punjabi, Punjabi app, Gurmukhi, Punjabi lessons, speak Punjabi, Punjabi for beginners">
+  <meta name="description" content="Learn to speak Punjabi and read Gurmukhi with bite-size lessons, illustrated stories, and an AI speaking tutor. Built for heritage learners. Free to start.">
+  <meta name="theme-color" content="#f6eedc">
+  <meta name="apple-itunes-app" content="app-id=6782532457">
 
   <link rel="canonical" href="https://ladoo.net/">
   <meta name="robots" content="index,follow">
@@ -17,13 +18,15 @@
   <meta property="og:url" content="https://ladoo.net/">
   <meta property="og:title" content="Ladoo | Learn Punjabi">
   <meta property="og:description" content="Speak, read, and understand Punjabi with bite-size lessons, Gurmukhi, stories, and an AI speaking tutor. Built for the diaspora.">
-  <meta property="og:image" content="https://ladoo.net/assets/icon-1024.png">
-  <meta property="og:image:width" content="1024">
-  <meta property="og:image:height" content="1024">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://ladoo.net/assets/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Ladoo: Learn Punjabi. Speak the Punjabi you grew up hearing.">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Ladoo | Learn Punjabi">
   <meta name="twitter:description" content="Speak, read, and understand Punjabi with bite-size lessons, Gurmukhi, stories, and an AI speaking tutor.">
-  <meta name="twitter:image" content="https://ladoo.net/assets/icon-1024.png">
+  <meta name="twitter:image" content="https://ladoo.net/assets/og-card.png">
 
   <!-- Google Search only picks up favicons sized in multiples of 48. -->
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
@@ -31,34 +34,66 @@
   <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon-96.png">
   <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <link rel="stylesheet" href="assets/site.css?v=6">
+  <link rel="stylesheet" href="assets/site.css?v=7">
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "MobileApplication",
+    "@id": "https://ladoo.net/#app",
     "name": "Ladoo: Learn Punjabi",
     "url": "https://ladoo.net/",
     "operatingSystem": "iOS, Android",
     "applicationCategory": "EducationalApplication",
     "description": "Learn to speak, read, and understand Punjabi with bite-size lessons, a full Gurmukhi script track, illustrated stories, and an AI speaking tutor.",
     "installUrl": "https://apps.apple.com/us/app/ladoo-learn-punjabi/id6782532457",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Ladoo Punjabi LLC",
-      "email": "LadooSupport@gmail.com"
-    }
+    "downloadUrl": "https://apps.apple.com/us/app/ladoo-learn-punjabi/id6782532457",
+    "softwareVersion": "1.3.1",
+    "inLanguage": ["en", "pa"],
+    "screenshot": [
+      "https://ladoo.net/assets/screen_01_learn.webp",
+      "https://ladoo.net/assets/screen_02_gurmukhi.webp",
+      "https://ladoo.net/assets/screen_03_speak.webp",
+      "https://ladoo.net/assets/screen_04_stories.webp",
+      "https://ladoo.net/assets/screen_05_bhaji.webp"
+    ],
+    "featureList": [
+      "170+ bite-size Punjabi lessons",
+      "Gurmukhi script track covering all 35 letters, vowel signs, and numerals",
+      "Finger tracing for every Gurmukhi letter",
+      "8 illustrated Punjabi stories with line-by-line narration",
+      "Bhaji, an AI speaking tutor with voice and text chat",
+      "Word-by-word pronunciation feedback",
+      "Spaced-repetition flashcards with audio"
+    ],
+    "sameAs": [
+      "https://apps.apple.com/us/app/ladoo-learn-punjabi/id6782532457",
+      "https://play.google.com/store/apps/details?id=com.punjabify.punjabify"
+    ],
+    "offers": {
+      "@type": "AggregateOffer",
+      "lowPrice": "9.99",
+      "highPrice": "69.99",
+      "priceCurrency": "USD",
+      "offerCount": "2",
+      "description": "Free to download. Ladoo Pro is $9.99 per month or $69.99 per year after a 7-day free trial."
+    },
+    "publisher": { "@id": "https://ladoo.net/#org" }
   }
   </script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": "https://ladoo.net/#org",
     "name": "Ladoo Punjabi LLC",
     "url": "https://ladoo.net/",
     "logo": "https://ladoo.net/assets/icon-1024.png",
-    "email": "LadooSupport@gmail.com"
+    "email": "LadooSupport@gmail.com",
+    "sameAs": [
+      "https://apps.apple.com/us/app/ladoo-learn-punjabi/id6782532457",
+      "https://play.google.com/store/apps/details?id=com.punjabify.punjabify"
+    ]
   }
   </script>
 </head>
@@ -138,6 +173,7 @@
         <div class="stat"><strong>35</strong><span>Gurmukhi letters, taught from zero</span></div>
         <div class="stat"><strong>8</strong><span>illustrated stories with narration</span></div>
         <div class="stat"><strong>1</strong><span>patient speaking tutor, always ready</span></div>
+        <p class="stats-note reveal">Ladoo Punjabi teaches all 35 Gurmukhi letters, plus vowel signs and numerals, with native-quality audio. The app includes 170+ bite-size Punjabi lessons, 8 illustrated stories with line-by-line narration, and Bhaji, an AI speaking tutor. Ladoo is free to start; Ladoo Pro costs $9.99 per month or $69.99 per year after a 7-day free trial.</p>
       </div>
     </section>
 
@@ -146,7 +182,7 @@
       <section class="feature" id="language">
         <div class="feature-copy reveal">
           <p class="eyebrow">The Language track</p>
-          <h2>From words to <span class="u-brick">sentences</span></h2>
+          <h2>Punjabi lessons, from words to <span class="u-brick">sentences</span></h2>
           <p class="lede">Start with greetings and build toward real conversation, one short lesson at a time.</p>
           <ul>
             <li><strong>Bite-size lessons</strong> that fit into a commute or a chai break.</li>
@@ -162,13 +198,14 @@
       <section class="feature" id="gurmukhi">
         <div class="feature-copy reveal">
           <p class="eyebrow">The Gurmukhi script</p>
-          <h2>From zero to <span class="u-brick">reading</span></h2>
+          <h2>The Gurmukhi script, from zero to <span class="u-brick">reading</span></h2>
           <p class="lede">A dedicated track for the script itself. Master every letter and vowel, then trace them with your finger until they feel like home.</p>
           <ul>
             <li><strong>Every letter and vowel</strong>, taught in a careful order.</li>
             <li><strong>Finger tracing</strong> so your hand learns the shapes too.</li>
             <li><strong>No prior reading ability</strong> assumed, ever.</li>
           </ul>
+          <p><a href="/learn/gurmukhi-alphabet/">See the full Gurmukhi alphabet chart with audio</a></p>
         </div>
         <div class="feature-media reveal">
           <img class="shot" src="assets/screen_02_gurmukhi.webp?v=1" alt="The Gurmukhi track showing the alphabet unit and the first letter lessons" width="1000" height="1600" loading="lazy" decoding="async">
@@ -178,7 +215,7 @@
       <section class="feature" id="speaking">
         <div class="feature-copy reveal">
           <p class="eyebrow">Speaking practice</p>
-          <h2>Hear it, then <span class="u-brick">say it</span></h2>
+          <h2>Speaking practice: hear it, then <span class="u-brick">say it</span></h2>
           <p class="lede">Every lesson makes you speak out loud. Ladoo listens and checks your pronunciation word by word, so you build a voice, not just a vocabulary.</p>
           <ul>
             <li><strong>Native-quality audio</strong> for every word and sentence.</li>
@@ -194,7 +231,7 @@
       <section class="feature" id="stories">
         <div class="feature-copy reveal">
           <p class="eyebrow">Read in context</p>
-          <h2>Short stories, real <span class="u-brick">context</span></h2>
+          <h2>Punjabi short stories, real <span class="u-brick">context</span></h2>
           <p class="lede">Mornings in the village, kite festivals, langar at the gurdwara. Read Punjabi the way it is actually used, with narration and translations a tap away.</p>
           <ul>
             <li><strong>Beginner to intermediate</strong> reads, three to five minutes each.</li>
@@ -209,8 +246,8 @@
 
       <section class="feature" id="bhaji">
         <div class="feature-copy reveal">
-          <p class="eyebrow">Your AI speaking tutor</p>
-          <h2>Talk it out with <span class="u-brick">Bhaji</span></h2>
+          <p class="eyebrow">Talk it out</p>
+          <h2>Bhaji, your AI Punjabi speaking <span class="u-brick">tutor</span></h2>
           <p class="lede">Bhaji chats with you in Punjabi, drills your current lessons, and remembers your past mistakes. Type or speak, and ask for a translation whenever you need one.</p>
           <ul>
             <li><strong>Real conversation practice</strong> about everyday scenarios.</li>
@@ -265,6 +302,35 @@
       </div>
     </section>
 
+    <section class="faq" id="faq" aria-label="Frequently asked questions">
+      <div class="wrap">
+        <p class="eyebrow reveal">Straight answers</p>
+        <h2 class="section-title reveal">Questions about learning Punjabi with <span class="u-brick">Ladoo</span></h2>
+        <div class="faq-list reveal-stagger">
+          <div class="faq-item">
+            <h3>Is Ladoo free?</h3>
+            <p>Ladoo is free to download, with free daily lessons, word cards, and speaking practice. Ladoo Pro unlocks unlimited chat with Bhaji, unlimited word cards, every story, and the full Gurmukhi learning hub for $9.99 per month or $69.99 per year, after a 7-day free trial.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Does Ladoo teach the Gurmukhi script?</h3>
+            <p>Yes. A dedicated Gurmukhi track teaches all 35 letters plus the nukta letters, vowel signs, and numerals from zero, with audio for every letter, finger tracing, and flashcards. You can preview the whole script on our <a href="/learn/gurmukhi-alphabet/">Gurmukhi alphabet chart</a>.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Is Ladoo good for heritage speakers who understand Punjabi but can't speak it?</h3>
+            <p>That is exactly who Ladoo is built for. Lessons assume you may know words by ear but have never read or spoken them: transliteration sits under every word, explanations are in English, and every lesson has you speak out loud with word-by-word feedback.</p>
+          </div>
+          <div class="faq-item">
+            <h3>How is Ladoo different from Ling or Duolingo?</h3>
+            <p><a href="/is-punjabi-on-duolingo/">Duolingo does not offer Punjabi at all</a>. Ling covers 60+ languages with one shared template; Ladoo teaches only Punjabi, so the Gurmukhi track, the stories, and the audio are built for it specifically, with heritage and diaspora learners in mind. Ling has more total exercises today; Ladoo goes deeper on script, speaking, and cultural context.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Does Ladoo work for kids?</h3>
+            <p>Ladoo is designed for teens and adults, though families do use it together. Lessons are short and gentle with no fail states, and the letter tracing works well for younger learners. There is no separate kids mode yet.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="download" id="download">
       <div class="wrap">
         <div class="download-panel reveal">
@@ -302,6 +368,8 @@
               <li><a href="#language">Lessons</a></li>
               <li><a href="#gurmukhi">Gurmukhi</a></li>
               <li><a href="#stories">Stories</a></li>
+              <li><a href="/learn/gurmukhi-alphabet/">Gurmukhi alphabet chart</a></li>
+              <li><a href="/is-punjabi-on-duolingo/">Is Punjabi on Duolingo?</a></li>
               <li><a href="https://apps.apple.com/us/app/ladoo-learn-punjabi/id6782532457" rel="noopener noreferrer">App Store</a></li>
               <li><a href="https://play.google.com/store/apps/details?id=com.punjabify.punjabify&amp;hl=en_US" rel="noopener noreferrer">Google Play</a></li>
             </ul>
@@ -328,6 +396,6 @@
     </div>
   </footer>
 
-  <script src="assets/site.js?v=4"></script>
+  <script src="assets/site.js?v=5"></script>
 </body>
 </html>

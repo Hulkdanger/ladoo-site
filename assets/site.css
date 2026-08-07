@@ -1042,3 +1042,113 @@ a:hover { color: var(--brick-deep); }
 }
 
 @media (min-width: 640px) { .escape { align-items: center; } }
+
+/* ---------- stats note (quotable facts) ---------- */
+
+.stats-note {
+  grid-column: 1 / -1;
+  max-width: 62em;
+  margin: 18px auto 0;
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 0.98rem;
+}
+
+/* ---------- faq ---------- */
+
+.faq { padding: 56px 0 24px; }
+.faq .section-title { max-width: 18em; }
+.faq-list { max-width: 46em; }
+.faq-item { padding: 22px 0; border-bottom: 1px solid var(--line); }
+.faq-item:last-child { border-bottom: none; }
+.faq-item h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.28rem;
+  margin: 0 0 10px;
+}
+.faq-item p { margin: 0; color: var(--ink-soft); }
+
+/* ---------- article pages (/learn/, guides) ---------- */
+
+.article { padding: 120px 0 64px; }
+.article .wrap { max-width: 880px; }
+.article h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.1rem, 4vw, 3rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  margin: 0 0 10px;
+}
+.article-meta {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  margin: 0 0 28px;
+}
+.article h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  line-height: 1.2;
+  margin: 44px 0 14px;
+}
+.article p.lede { color: var(--ink-soft); font-size: 1.12rem; }
+.article-cta {
+  margin: 40px 0 0;
+  padding: 24px 26px;
+  background: var(--cream-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.article-cta p { margin: 0 0 14px; }
+
+/* letter grid on the alphabet page */
+
+.letter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 14px;
+  margin: 18px 0 8px;
+}
+.letter-card {
+  background: var(--cream-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px;
+}
+.letter-head { display: flex; align-items: center; gap: 14px; }
+.letter-glyph {
+  font-family: var(--font-pa);
+  font-size: 2.6rem;
+  line-height: 1;
+  color: var(--brick);
+}
+.letter-name { flex: 1; }
+.letter-name strong { display: block; font-size: 1.02rem; }
+.letter-name span { color: var(--ink-soft); font-size: 0.88rem; }
+.letter-play {
+  border: 1px solid var(--line);
+  background: var(--cream);
+  color: var(--brick);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  cursor: pointer;
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.letter-play:hover { background: var(--cream-deep); }
+.letter-tip { margin: 12px 0 0; font-size: 0.9rem; color: var(--ink-soft); }
+.letter-example { margin: 10px 0 0; font-size: 0.92rem; }
+.letter-example .pa { font-family: var(--font-pa); }
+
+@media print {
+  .site-header, .site-footer, .letter-play, .article-cta, .scroll-progress { display: none !important; }
+  body::after { display: none; }
+  .article { padding: 0; }
+  .letter-grid { grid-template-columns: repeat(3, 1fr); }
+}

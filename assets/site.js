@@ -389,3 +389,35 @@
     if (e.key === "Escape") { close(); }
   });
 })();
+
+/* Letter audio on the alphabet page. One shared player; a tap swaps the source. */
+(function () {
+  "use strict";
+  var buttons = document.querySelectorAll(".letter-play[data-audio]");
+  if (!buttons.length) return;
+  var player = new Audio();
+  buttons.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      player.src = btn.getAttribute("data-audio");
+      player.play();
+    });
+  });
+})();
+
+/* PostHog pageviews, so AI-assistant referrers (chatgpt.com, perplexity.ai)
+   become visible. GitHub Pages has no access logs. */
+(function () {
+  "use strict";
+  var s = document.createElement("script");
+  s.async = true;
+  s.src = "https://us-assets.i.posthog.com/static/array.js";
+  s.onload = function () {
+    if (window.posthog && window.posthog.init) {
+      window.posthog.init("phc_y8gjtgzFiT5segFLfxqPx73qeXxg8VnDSXSfWaJa9TqL", {
+        api_host: "https://us.i.posthog.com",
+        defaults: "2025-05-24"
+      });
+    }
+  };
+  document.head.appendChild(s);
+})();
