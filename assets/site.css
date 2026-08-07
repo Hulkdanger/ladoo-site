@@ -340,16 +340,12 @@ a:hover { color: var(--brick-deep); }
   color: var(--ink-soft);
 }
 
-.device {
-  position: relative;
-  width: min(240px, 64vw);
-  border-radius: 38px;
-  background: var(--ink);
-  padding: 10px;
-  box-shadow: 0 30px 60px rgba(43, 32, 21, 0.2), 0 10px 22px rgba(43, 32, 21, 0.12);
+/* screenshots already carry their own cream mat and shadow, so no frame here */
+.shot {
+  display: block;
+  width: min(380px, 96vw);
+  height: auto;
 }
-
-.device img { border-radius: 29px; }
 
 /* ---------- stats ---------- */
 
@@ -392,11 +388,6 @@ a:hover { color: var(--brick-deep); }
 .feature-media { display: flex; justify-content: center; }
 
 .feature:nth-of-type(even) .feature-media { order: -1; }
-.feature:nth-of-type(odd) .feature-media .device { transform: rotate(1.8deg); }
-.feature:nth-of-type(even) .feature-media .device { transform: rotate(-1.8deg); }
-
-.feature-media .device { transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
-.feature:hover .feature-media .device { transform: rotate(0deg); }
 
 .eyebrow {
   font-size: 0.82rem;
@@ -946,9 +937,7 @@ a:hover { color: var(--brick-deep); }
 
 .reveal.in { opacity: 1; transform: none; }
 
-.feature-media.reveal { transform: translateX(70px) rotate(4deg); }
-.feature:nth-of-type(even) .feature-media.reveal { transform: translateX(-70px) rotate(-4deg); }
-.feature-media.reveal.in { transform: none; }
+/* no rotation or sideways slide: a tilted screenshot overflowed narrow screens */
 
 .reveal-stagger > * {
   opacity: 0;
@@ -969,7 +958,6 @@ a:hover { color: var(--brick-deep); }
   html { scroll-behavior: auto; }
   .reveal, .reveal-stagger > * { opacity: 1; transform: none; transition: none; }
   .word-card { animation: none; }
-  .feature-media .device { transition: none; }
   .btn { transition: none; }
   .u-brick::after { transform: scaleX(1); transition: none; }
   .way-art path { stroke-dashoffset: 0; animation: none; }
