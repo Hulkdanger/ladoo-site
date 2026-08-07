@@ -416,9 +416,15 @@
       window.posthog.init("phc_y8gjtgzFiT5segFLfxqPx73qeXxg8VnDSXSfWaJa9TqL", {
         api_host: "https://us.i.posthog.com",
         defaults: "2025-05-24",
-        /* array.js loads after the document is complete, and in that state the
-           default history_change mode never fires the initial pageview. */
-        capture_pageview: true
+        capture_pageview: true,
+        loaded: function (ph) {
+          /* array.js loads async, usually after the window load event; the
+             SDK's own initial-pageview hook never fires in that state. If the
+             document is still loading, the SDK's hook will handle it. */
+          if (document.readyState === "complete" && !ph._initialPageviewCaptured) {
+            ph.capture("$pageview");
+          }
+        }
       });
     }
   };
