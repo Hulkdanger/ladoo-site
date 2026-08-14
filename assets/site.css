@@ -1158,3 +1158,6 @@ a:hover { color: var(--brick-deep); }
 }
 
 .footer-col a.btn { color: var(--cream-raised); }
+
+.article-lg p, .article-lg li { font-size: 1.1875rem; }
+.article-lg p.lede { font-size: 1.245rem; }
