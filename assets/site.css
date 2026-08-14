@@ -309,6 +309,10 @@ a:hover { color: var(--brick-deep); }
   padding-bottom: 2px;
 }
 
+/* Brick emphasis without the swipe underline. A lone brand word with a brick
+   underline reads as a hyperlink, since links are brick and underlined too. */
+.u-brick-plain { color: var(--brick); }
+
 .u-brick::after {
   content: "";
   position: absolute;
