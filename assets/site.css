@@ -379,7 +379,8 @@ a:hover { color: var(--brick-deep); }
 
 /* ---------- feature rows ---------- */
 
-.features { padding: 48px 0 32px; }
+/* padding-block only: a shorthand here would wipe .wrap's side gutters */
+.features { padding-block: 48px 32px; }
 
 .feature {
   display: grid;
@@ -908,7 +909,7 @@ a:hover { color: var(--brick-deep); }
 }
 .legal-hero .legal-meta { color: var(--ink-soft); }
 
-.legal-body { max-width: 760px; padding: 56px 0 96px; }
+.legal-body { max-width: 760px; padding-block: 56px 96px; }
 .legal-body h1 {
   font-family: var(--font-display);
   font-weight: 600;
@@ -986,6 +987,8 @@ a:hover { color: var(--brick-deep); }
   .way-grid .way-art { order: 2; }
   .stats .wrap { grid-template-columns: repeat(2, 1fr); gap: 32px 20px; }
   .site-nav a.nav-link { display: none; }
+  /* the 4-column provider table cannot fit a phone: scroll it, not the page */
+  .legal-body table { display: block; overflow-x: auto; width: max-content; max-width: 100%; }
 }
 
 @media (max-width: 480px) {
