@@ -1156,3 +1156,5 @@ a:hover { color: var(--brick-deep); }
   .article { padding: 0; }
   .letter-grid { grid-template-columns: repeat(3, 1fr); }
 }
+
+.footer-col a.btn { color: var(--cream-raised); }
