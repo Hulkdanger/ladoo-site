@@ -427,3 +427,75 @@
   };
   document.head.appendChild(s);
 })();
+
+
+/* Store-link click capture (retention plan D3): which placements actually
+   send people to the stores. Fires everywhere site.js loads. */
+(function () {
+  "use strict";
+  document.addEventListener("click", function (e) {
+    var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+    if (!a || !window.posthog || !window.posthog.capture) return;
+    var href = a.getAttribute("href") || "";
+    var store = href.indexOf("apps.apple.com") !== -1 ? "app_store"
+      : href.indexOf("play.google.com") !== -1 ? "play_store" : null;
+    if (!store) return;
+    var section = a.closest("section, footer, header");
+    var placement = section
+      ? (section.id || (section.className || "").split(" ")[0] || "page")
+      : "page";
+    window.posthog.capture("store_link_clicked", {
+      store: store,
+      placement: placement,
+      path: location.pathname
+    }, { transport: "sendBeacon" });
+  }, true);
+})();
+
+/* Email starter form (retention plan D3) -> newsletter-signup Edge Function. */
+(function () {
+  "use strict";
+  var form = document.getElementById("starter-form");
+  if (!form) return;
+  var msg = document.getElementById("starter-msg");
+  var busy = false;
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (busy) return;
+    var email = (document.getElementById("starter-email").value || "").trim();
+    var honeypot = document.getElementById("starter-website").value || "";
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+      msg.textContent = "That email doesn\u2019t look right \u2014 check it and try again.";
+      msg.className = "starter-msg err";
+      return;
+    }
+    busy = true;
+    msg.textContent = "Sending\u2026";
+    msg.className = "starter-msg";
+    fetch("https://ilcwcghgeialtwnnpapl.functions.supabase.co/newsletter-signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: email, source: location.pathname, website: honeypot })
+    }).then(function (res) {
+      busy = false;
+      if (res.ok) {
+        msg.textContent = "Sat sr\u012b ak\u0101l \u2014 your starter is on its way. Check your inbox.";
+        msg.className = "starter-msg";
+        form.reset();
+        if (window.posthog && window.posthog.capture) {
+          window.posthog.capture("starter_email_submitted", { path: location.pathname });
+        }
+      } else if (res.status === 429) {
+        msg.textContent = "Too many tries from this connection \u2014 please try later.";
+        msg.className = "starter-msg err";
+      } else {
+        msg.textContent = "Something went wrong \u2014 please try again in a moment.";
+        msg.className = "starter-msg err";
+      }
+    }).catch(function () {
+      busy = false;
+      msg.textContent = "Couldn\u2019t reach the server \u2014 check your connection.";
+      msg.className = "starter-msg err";
+    });
+  });
+})();

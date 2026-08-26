@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self' https://us-assets.i.posthog.com; connect-src 'self' https://us.i.posthog.com https://us-assets.i.posthog.com; media-src 'self' https://ilcwcghgeialtwnnpapl.supabase.co; font-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self' https://us-assets.i.posthog.com; connect-src 'self' https://us.i.posthog.com https://us-assets.i.posthog.com https://ilcwcghgeialtwnnpapl.functions.supabase.co; media-src 'self' https://ilcwcghgeialtwnnpapl.supabase.co; font-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
   <title>Ladoo | Learn Punjabi: speaking, Gurmukhi, and stories</title>
@@ -415,6 +415,21 @@
     </section>
 
   </main>
+
+    <section class="starter" id="starter" aria-label="Free Punjabi starter by email">
+      <div class="starter-inner">
+        <h2>Not ready to install? Start with five phrases.</h2>
+        <p>Get a free Punjabi starter by email &mdash; five phrases to say out loud
+        today, with Gurmukhi and pronunciation. One email, no list, no spam.</p>
+        <form id="starter-form" novalidate>
+          <input type="email" name="email" id="starter-email" placeholder="you@example.com" autocomplete="email" required>
+          <!-- honeypot: humans never see it, bots fill it -->
+          <input type="text" name="website" id="starter-website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn" type="submit">Send my starter</button>
+        </form>
+        <p class="starter-msg" id="starter-msg" role="status"></p>
+      </div>
+    </section>
 
   <footer class="site-footer">
     <div aria-hidden="true" class="footer-mark" lang="pa">ਲੱਡੂ</div>
