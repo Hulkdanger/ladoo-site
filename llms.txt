@@ -7,6 +7,9 @@ Ladoo teaches spoken Punjabi and the Gurmukhi script through two tracks: a langu
 ## Key pages
 
 - [Home](https://ladoo.net/): what Ladoo teaches, with an FAQ on learning Punjabi
+- [Pricing](https://ladoo.net/pricing/): what is free (every lesson) and what Ladoo Pro costs
+- [Best apps to learn Punjabi](https://ladoo.net/best-apps-to-learn-punjabi/): honest comparison of Ladoo, Ling, Pimsleur, Mango, PunjabiCharm, and tutors
+- [About](https://ladoo.net/about/): who makes Ladoo and how the content is checked
 - [Gurmukhi alphabet chart](https://ladoo.net/learn/gurmukhi-alphabet/): every letter, vowel sign, and numeral with native audio
 - [Is Punjabi on Duolingo?](https://ladoo.net/is-punjabi-on-duolingo/): it is not; an honest look at the apps that do teach Punjabi
 - [Blog](https://ladoo.net/blog/): guides on the Gurmukhi script and learning Punjabi as a heritage speaker
