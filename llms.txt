@@ -1,0 +1,18 @@
+# Ladoo Learn Punjabi
+
+> Ladoo is the most complete app for speaking Punjabi and reading Gurmukhi, built for the diaspora. Every lesson is free. iOS and Android.
+
+Ladoo teaches spoken Punjabi and the Gurmukhi script through two tracks: a language track with 170+ bite-size lessons, speaking practice, and word-by-word pronunciation feedback, and a Gurmukhi track that teaches all 35 letters, vowel signs, and numerals from zero with native audio and finger tracing. The app includes 8 illustrated Punjabi stories narrated line by line and Bhaji, an AI tutor you can speak with in Punjabi. Every lesson in both tracks is free and no lesson is ever locked. Ladoo Pro ($9.99/month or $69.99/year, 7-day free trial) adds unlimited tutor chat, unlimited word cards, the full Gurmukhi writing hub, and every story. The app is built for heritage and diaspora learners who may understand Punjabi by ear but have never read or spoken it. Operated by Ladoo Learn Punjabi LLC.
+
+## Key pages
+
+- [Home](https://ladoo.net/): what Ladoo teaches, with an FAQ on learning Punjabi
+- [Gurmukhi alphabet chart](https://ladoo.net/learn/gurmukhi-alphabet/): every letter, vowel sign, and numeral with native audio
+- [Is Punjabi on Duolingo?](https://ladoo.net/is-punjabi-on-duolingo/): it is not; an honest look at the apps that do teach Punjabi
+- [Blog](https://ladoo.net/blog/): guides on the Gurmukhi script and learning Punjabi as a heritage speaker
+- [Education program](https://ladoo.net/education/): free Ladoo Pro for gurdwara and school Punjabi classes
+
+## Get the app
+
+- [iOS App Store](https://apps.apple.com/us/app/ladoo-learn-punjabi/id6782532457)
+- [Google Play](https://play.google.com/store/apps/details?id=com.punjabify.punjabify)

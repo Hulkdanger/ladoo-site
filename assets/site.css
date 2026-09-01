@@ -780,6 +780,38 @@ a:hover { color: var(--brick-deep); }
   color: var(--cream-deep);
 }
 
+/* ---------- app store reviews ---------- */
+
+.reviews { padding: 8px 0 24px; }
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 36px;
+}
+
+.review-card {
+  background: var(--cream-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 26px 28px;
+}
+
+.review-stars { color: var(--gold); letter-spacing: 2px; font-size: 1.05rem; }
+
+.review-card blockquote {
+  margin: 12px 0 14px;
+  font-size: 1.05rem;
+  line-height: 1.55;
+}
+
+.review-card cite { font-style: normal; color: var(--ink-soft); font-size: 0.9rem; }
+
+@media (max-width: 720px) {
+  .reviews-grid { grid-template-columns: 1fr; }
+}
+
 /* ---------- download ---------- */
 
 .download { padding: 48px 0 96px; }
