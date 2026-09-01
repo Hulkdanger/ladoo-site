@@ -11,6 +11,10 @@ Ladoo teaches spoken Punjabi and the Gurmukhi script through two tracks: a langu
 - [Best apps to learn Punjabi](https://ladoo.net/best-apps-to-learn-punjabi/): honest comparison of Ladoo, Ling, Pimsleur, Mango, PunjabiCharm, and tutors
 - [About](https://ladoo.net/about/): who makes Ladoo and how the content is checked
 - [Gurmukhi alphabet chart](https://ladoo.net/learn/gurmukhi-alphabet/): every letter, vowel sign, and numeral with native audio
+- [Gurmukhi vowels](https://ladoo.net/learn/gurmukhi-vowels/): the 9 laga matra and mukta, with audio
+- [Pairin and nukta letters](https://ladoo.net/learn/gurmukhi-pairin-and-nukta/): the last nine shapes, with audio
+- [Gurmukhi vs Shahmukhi](https://ladoo.net/learn/gurmukhi-vs-shahmukhi/): one language, two scripts
+- [Punjabi numbers](https://ladoo.net/learn/punjabi-numbers/): digits and counting 1 to 100, with audio
 - [Is Punjabi on Duolingo?](https://ladoo.net/is-punjabi-on-duolingo/): it is not; an honest look at the apps that do teach Punjabi
 - [Punjabi greetings](https://ladoo.net/phrases/punjabi-greetings/): hello, thank you, goodbye with native audio
 - [Punjabi family words](https://ladoo.net/phrases/punjabi-family-words/): every aunt and uncle named, with audio
