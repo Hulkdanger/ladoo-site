@@ -12,6 +12,10 @@ Ladoo teaches spoken Punjabi and the Gurmukhi script through two tracks: a langu
 - [About](https://ladoo.net/about/): who makes Ladoo and how the content is checked
 - [Gurmukhi alphabet chart](https://ladoo.net/learn/gurmukhi-alphabet/): every letter, vowel sign, and numeral with native audio
 - [Is Punjabi on Duolingo?](https://ladoo.net/is-punjabi-on-duolingo/): it is not; an honest look at the apps that do teach Punjabi
+- [Punjabi greetings](https://ladoo.net/phrases/punjabi-greetings/): hello, thank you, goodbye with native audio
+- [Punjabi family words](https://ladoo.net/phrases/punjabi-family-words/): every aunt and uncle named, with audio
+- [I love you and thank you in Punjabi](https://ladoo.net/phrases/punjabi-love-and-thanks/): with audio
+- [Punjabi food words](https://ladoo.net/phrases/punjabi-food-words/): chaa, roti, and the kitchen, with audio
 - [Blog](https://ladoo.net/blog/): guides on the Gurmukhi script and learning Punjabi as a heritage speaker
 - [Education program](https://ladoo.net/education/): free Ladoo Pro for gurdwara and school Punjabi classes
 

@@ -1182,6 +1182,8 @@ a:hover { color: var(--brick-deep); }
 }
 .letter-play:hover { background: var(--cream-deep); }
 .letter-tip { margin: 12px 0 0; font-size: 0.9rem; color: var(--ink-soft); }
+/* word/phrase cards reuse the letter-card kit with a smaller glyph */
+.phrase-card .letter-glyph { font-size: 1.7rem; line-height: 1.3; }
 .letter-example { margin: 10px 0 0; font-size: 0.92rem; }
 .letter-example .pa { font-family: var(--font-pa); }
 
