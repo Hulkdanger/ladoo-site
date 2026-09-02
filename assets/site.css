@@ -338,6 +338,26 @@ a:hover { color: var(--brick-deep); }
 
 .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
 
+.hero-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: -14px 0 30px;
+  padding: 0;
+}
+
+.hero-list li {
+  padding: 7px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--cream-raised);
+  color: var(--ink);
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
 .hero-note {
   margin-top: 18px;
   font-size: 0.9rem;
@@ -1082,16 +1102,38 @@ a:hover { color: var(--brick-deep); }
 
 @media (min-width: 640px) { .escape { align-items: center; } }
 
-/* ---------- stats note (quotable facts) ---------- */
+/* ---------- at-a-glance facts (quotable, one sentence each) ---------- */
 
-.stats-note {
+.glance {
   grid-column: 1 / -1;
-  max-width: 62em;
-  margin: 18px auto 0;
-  text-align: center;
-  color: var(--ink-soft);
-  font-size: 0.98rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin: 28px 0 0;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
 }
+
+.glance div { margin: 0; }
+
+.glance dt {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sage-deep);
+  margin: 0 0 8px;
+}
+
+.glance dd {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+@media (max-width: 900px) { .glance { grid-template-columns: 1fr 1fr; gap: 24px 20px; } }
+@media (max-width: 480px) { .glance { grid-template-columns: 1fr; } }
 
 /* ---------- faq ---------- */
 
