@@ -358,6 +358,8 @@ a:hover { color: var(--brick-deep); }
   font-weight: 600;
 }
 
+.hero-sub-more { font-size: 1.05rem; margin: -22px 0 30px; }
+
 .hero-note {
   margin-top: 18px;
   font-size: 0.9rem;
@@ -1032,6 +1034,13 @@ a:hover { color: var(--brick-deep); }
 
 @media (max-width: 900px) {
   .hero { padding-top: 64px; }
+  /* phone: headline, one-line promise, then the store buttons, all above the
+     fold. Everything added since goes under them. */
+  .hero-copy { display: flex; flex-direction: column; }
+  .hero-ctas { order: 1; }
+  .hero-note { order: 2; }
+  .hero-sub-more { order: 3; margin: 30px 0 0; }
+  .hero-list { order: 4; margin: 22px 0 0; }
   .hero-watermark { font-size: 300px; top: -40px; right: -80px; }
   .feature { grid-template-columns: 1fr; gap: 40px; padding: 48px 0; }
   .feature:nth-of-type(even) .feature-media { order: 0; }
@@ -1045,6 +1054,10 @@ a:hover { color: var(--brick-deep); }
 
 @media (max-width: 480px) {
   body { font-size: 1rem; }
+  /* every pixel here is one the store buttons need on a small iPhone */
+  .hero { padding-top: 48px; }
+  .hero h1 { margin-bottom: 18px; }
+  .hero-sub { margin-bottom: 26px; }
   .stats .wrap { grid-template-columns: 1fr 1fr; }
   .hero-ctas .btn { width: 100%; justify-content: center; }
   .download-ctas .btn { width: 100%; justify-content: center; }
