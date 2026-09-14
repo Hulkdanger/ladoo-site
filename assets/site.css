@@ -17,6 +17,7 @@
   --font-display: "Fraunces", "Noto Serif Gurmukhi", Georgia, serif;
   --font-body: "Karla", "Helvetica Neue", Arial, sans-serif;
   --font-pa: "Noto Serif Gurmukhi", serif;
+  --font-pa-arab: "Noto Nastaliq Urdu", "Noto Naskh Arabic", serif;
 }
 
 * { box-sizing: border-box; }
@@ -256,6 +257,13 @@ a:hover { color: var(--brick-deep); }
   font-size: 1.25rem;
   color: var(--ink);
   line-height: 1.35;
+}
+
+.word-card .pa-arab {
+  font-family: var(--font-pa-arab);
+  font-size: 1.15rem;
+  line-height: 1.9;
+  padding-top: 2px;
 }
 
 .word-card .en {
