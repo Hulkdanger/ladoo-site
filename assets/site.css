@@ -264,6 +264,23 @@ a:hover { color: var(--brick-deep); }
   font-size: 1.15rem;
   line-height: 1.9;
   padding-top: 2px;
+  text-align: left;
+}
+
+/* Hero cards hold Gurmukhi, cross-fade to Shahmukhi, hold, and fade back. */
+.pa-cycle { display: grid; }
+.pa-cycle > .pa { grid-area: 1 / 1; align-self: center; animation: script-a 14s ease-in-out infinite; }
+.pa-cycle > .pa-arab { animation-name: script-b; }
+
+@keyframes script-a {
+  0%, 40% { opacity: 1; }
+  47%, 90% { opacity: 0; }
+  97%, 100% { opacity: 1; }
+}
+@keyframes script-b {
+  0%, 40% { opacity: 0; }
+  47%, 90% { opacity: 1; }
+  97%, 100% { opacity: 0; }
 }
 
 .word-card .en {
@@ -1027,6 +1044,7 @@ a:hover { color: var(--brick-deep); }
   html { scroll-behavior: auto; }
   .reveal, .reveal-stagger > * { opacity: 1; transform: none; transition: none; }
   .word-card { animation: none; }
+  .pa-cycle > .pa { animation-timing-function: steps(1, end); }
   .btn { transition: none; }
   .u-brick::after { transform: scaleX(1); transition: none; }
   .way-art path { stroke-dashoffset: 0; animation: none; }
