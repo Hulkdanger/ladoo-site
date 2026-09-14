@@ -421,6 +421,8 @@ a:hover { color: var(--brick-deep); }
 }
 
 .feature-media { display: flex; justify-content: center; }
+.feature-media-pair { gap: 14px; }
+.feature-media-pair .shot { width: auto; flex: 0 1 calc(50% - 7px); max-width: 300px; }
 
 .feature:nth-of-type(even) .feature-media { order: -1; }
 
