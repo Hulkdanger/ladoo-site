@@ -1,4 +1,4 @@
-@import url("fonts/fonts.css");
+@import url("fonts/fonts.css?v=16");
 
 :root {
   --cream: #f6eedc;
@@ -14,7 +14,7 @@
   --gold: #dfae45;
   --line: #e3d5b8;
   --radius: 20px;
-  --font-display: "Fraunces", "Noto Serif Gurmukhi", Georgia, serif;
+  --font-display: "Nunito", "Noto Serif Gurmukhi", "Helvetica Neue", Arial, sans-serif;
   --font-body: "Karla", "Helvetica Neue", Arial, sans-serif;
   --font-pa: "Noto Serif Gurmukhi", serif;
   --font-pa-arab: "Noto Nastaliq Urdu", "Noto Naskh Arabic", serif;
@@ -269,18 +269,19 @@ a:hover { color: var(--brick-deep); }
 
 /* Hero cards hold Gurmukhi, cross-fade to Shahmukhi, hold, and fade back. */
 .pa-cycle { display: grid; }
-.pa-cycle > .pa { grid-area: 1 / 1; align-self: center; animation: script-a 14s ease-in-out infinite; }
+.pa-cycle > .pa { grid-area: 1 / 1; align-self: center; animation: script-a 5s ease-in-out infinite; }
 .pa-cycle > .pa-arab { animation-name: script-b; }
 
+/* 5s loop: each script on screen 2.5s (2s hold + 0.5s cross-fade) */
 @keyframes script-a {
   0%, 40% { opacity: 1; }
-  47%, 90% { opacity: 0; }
-  97%, 100% { opacity: 1; }
+  50%, 90% { opacity: 0; }
+  100% { opacity: 1; }
 }
 @keyframes script-b {
   0%, 40% { opacity: 0; }
-  47%, 90% { opacity: 1; }
-  97%, 100% { opacity: 0; }
+  50%, 90% { opacity: 1; }
+  100% { opacity: 0; }
 }
 
 .word-card .en {
