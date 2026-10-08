@@ -21,6 +21,17 @@ Then open http://127.0.0.1:8123/
 
 Any static host works (GitHub Pages, Cloudflare Pages, Netlify). For GitHub Pages: push this folder as a repo (or subtree) and enable Pages on the root.
 
+## Markdown for agents
+
+`_cloudflare-worker/` holds a Cloudflare Worker (free plan) that sits on the `ladoo.net/*` route in front of GitHub Pages. Requests with `Accept: text/markdown` get the page as Markdown (`Content-Type: text/markdown`, `Vary: Accept`), 404s included; everything else passes through. The folder starts with `_` so Jekyll keeps it out of the published site.
+
+```
+cd _cloudflare-worker
+npm test                       # node --test; LIVE=1 also checks ladoo.net
+npx wrangler login             # once, in a browser
+npx wrangler deploy            # publishes the route
+```
+
 ## Live domain
 
 https://ladoo.net (GitHub Pages, CNAME file in repo root). Canonicals, og:url, sitemap, and robots all point there.
