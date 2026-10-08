@@ -273,7 +273,8 @@
 
   // Landed in a real browser via the escape link: go straight to the store they tapped.
   if (!IN_APP) {
-    if (WANTS) { location.replace(STORES[WANTS]); }
+    // Emails link ?go=app for everyone; an Android phone can't use the App Store.
+    if (WANTS) { location.replace(STORES[/Android/i.test(navigator.userAgent) ? "play" : WANTS]); }
     return;
   }
 
