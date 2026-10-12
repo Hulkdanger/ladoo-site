@@ -30,11 +30,11 @@
   <main>
     <div class="wrap legal-body">
       <h1>Privacy Policy</h1>
-      <p><strong>Last updated:</strong> July 19, 2026 &nbsp;&middot;&nbsp; <strong>Effective:</strong> June 24, 2026</p>
+      <p><strong>Last updated:</strong> October 12, 2026 &nbsp;&middot;&nbsp; <strong>Effective:</strong> June 24, 2026</p>
 
       <p>Ladoo is an app for learning Punjabi, including a conversational AI tutor ("Bhaji"). This policy explains what information we collect, why we collect it, who we share it with, how long we keep it, and the choices and rights you have.</p>
 
-      <p><strong>The short version.</strong> We collect the information needed to run your account, teach you Punjabi, power the AI tutor, and process subscriptions. To transcribe your speech and generate tutor replies, we send your voice and messages to Google's speech and AI services. <strong>We do not sell your personal information, we do not show ads, and we do not track you across other apps or websites.</strong> You can delete your account and all associated data from within the app at any time.</p>
+      <p><strong>The short version.</strong> We collect the information needed to run your account, teach you Punjabi, power the AI tutor, and process subscriptions. To transcribe your speech and generate tutor replies, we send your voice and messages to Google's speech and AI services. We are also testing a second speech service, Sarvam AI, on recordings from Speak exercises. <strong>We do not sell your personal information, we do not show ads, and we do not track you across other apps or websites.</strong> You can delete your account and all associated data from within the app at any time.</p>
 
       <h2 id="who">1. Who we are</h2>
       <p>Ladoo (the "App") is operated by Ladoo LLC ("we," "us," or "our"). We are the controller responsible for your personal information as described in this policy.</p>
@@ -54,7 +54,9 @@
       <p>You may also set or edit a <strong>display name / username</strong> shown in the App.</p>
 
       <h3>b. Voice &amp; audio</h3>
-      <p>Voice features use your device microphone, and your recording is used in two ways. When you complete a Speak exercise in a lesson, the audio is sent securely through our backend to <strong>Google Cloud Speech-to-Text</strong> to transcribe what you said. When you speak to the AI tutor (Bhaji), the audio is sent through our backend to <strong>Google's AI service</strong>, which transcribes it and generates the tutor's reply. In both cases the audio is captured to a temporary file on your device and <strong>we do not store your raw audio recordings</strong>: the temporary file is discarded after the turn is processed. The resulting <strong>transcript</strong> (the text of what you said) is saved as part of your tutor chat history so you can review your conversations.</p>
+      <p>Voice features use your device microphone, and your recording is used in two ways. When you complete a Speak exercise in a lesson, the audio is sent securely through our backend to <strong>Google Cloud Speech-to-Text</strong> to transcribe what you said. When you speak to the AI tutor (Bhaji), the audio is sent through our backend to <strong>Google's AI service</strong>, which transcribes it and generates the tutor's reply. In both cases the audio is captured to a temporary file on your device, and the temporary file is discarded after the turn is processed. The resulting <strong>transcript</strong> (the text of what you said) is saved as part of your tutor chat history so you can review your conversations. Apart from the two cases described next, <strong>we do not store your raw audio recordings</strong>.</p>
+      <p><strong>Speech service test.</strong> We are testing a second speech-recognition service, <strong>Sarvam AI</strong>, to find out whether it understands spoken Punjabi more accurately. During this test, after Google has checked a Speak exercise recording, a copy of the same recording is also sent to Sarvam AI. Sarvam's answer does not change your result. For each of these recordings we keep a record linked to your account of the word you were asked to say, what each service heard, and whether each one accepted your answer. When the two services disagree, we also keep the recording itself so that we can listen to it and judge which service was right. These recordings are stored privately and are not shared with anyone else.</p>
+      <p><strong>Sound pairs.</strong> In versions of the App that include Sound pairs pronunciation practice, you say one word from a pair of words that differ by a single sound. Your recording is sent to Sarvam AI to transcribe it, and our servers measure the pitch of your voice to check tone. We keep your most recent recording of each word so you can play it back, together with a record of each attempt (the word, what Sarvam AI heard, the pitch measurements, and the result).</p>
       <p><strong>Live conversation mode</strong> (available on newer versions of the App) works differently. While a live session is open, audio from your microphone streams in real time <strong>directly from your device to Google's AI service</strong> (the Gemini Live API) over an encrypted connection, and the tutor's spoken replies stream back the same way. Our servers authorize each session and enforce time limits, but the audio itself does not pass through them, and <strong>we do not store the audio</strong>. Google returns text transcripts of both sides of the conversation; those transcripts are saved to your tutor chat history like any other conversation and are used at the end of a session to identify corrections for your practice. The App streams audio only while a live session is open, and you can end a session at any time.</p>
 
       <h3>c. AI tutor content</h3>
@@ -64,10 +66,11 @@
       <p>We store your learning activity so your progress syncs across sessions, including: lessons completed and scores, words learned, experience points (XP), daily streaks, "hearts," "gems," your saved "mistake bank" (questions you answered incorrectly, kept for targeted practice), and settings such as your daily goal, learning reason, sound, and romanization preferences.</p>
 
       <h3>e. Subscriptions &amp; purchases</h3>
-      <p>If you purchase a Ladoo Pro subscription, the transaction is processed by <strong>Apple's App Store</strong>, we never receive or store your full payment card details. To verify and activate your subscription, we store a purchase record including the product purchased, Apple's transaction identifier, your subscription/trial status and expiry date, and the verification response returned by Apple.</p>
+      <p>If you purchase a Ladoo Pro subscription, the transaction is processed by <strong>Apple's App Store</strong>. We never receive or store your full payment card details. To verify and activate your subscription, we store a purchase record including the product purchased, Apple's transaction identifier, your subscription/trial status and expiry date, and the verification response returned by Apple.</p>
 
       <h3>f. Usage &amp; analytics events</h3>
       <p>We log a limited set of product events to understand how features are used and to improve the App, for example when a lesson is started or completed, a feature such as the AI tutor or flashcards is opened, a screen is viewed, a subscription screen is viewed, a call-to-action is tapped, a purchase is started or completed, a free trial begins, or a free-tier limit is reached. These events are keyed to your account identifier (not your name or email) and are stored in our own backend and with our product-analytics provider, <strong>PostHog</strong>, which we use to measure retention and feature usage. Alongside each event, PostHog automatically records basic technical context (such as device and operating-system type, app version, and a session identifier) and derives an <strong>approximate location</strong> (such as country, region, and city) from your IP address; we use this only for product analytics, never for advertising. <strong>We have not enabled session recording or screen replay</strong>, so PostHog does not capture video-style recordings of your screen or your taps; we only log the discrete events described above. <strong>We do not use third-party advertising or cross-app tracking analytics</strong> (such as ad networks), and we do not track you across other apps or websites.</p>
+      <p><strong>Your choice.</strong> Whether these analytics are on by default depends on where you are. In the European Economic Area, Switzerland, Ontario, Quebec, and any country not listed below, analytics stay off until you agree to them in the App. In the United States, the United Kingdom, the rest of Canada, Australia, New Zealand, India, and Pakistan, analytics are on by default and are used only to understand how the App is used so we can improve it. Wherever you are, you can turn them off at any time in the App under Profile &rarr; Settings &rarr; "Share usage analytics", and nothing further is sent once you do. The App works out which rule applies on your device from its time-zone setting; that setting is not sent to us for this purpose.</p>
 
       <h3>g. Diagnostics &amp; crash data</h3>
       <p>To keep the App stable, we may collect crash reports and error diagnostics through <strong>Sentry</strong>. These include technical details such as error messages, stack traces, and basic device/app context. We have configured Sentry <strong>not</strong> to send default personally identifying information (for example, your IP address is not sent), and we do not send your conversations or account email to Sentry.</p>
@@ -97,14 +100,17 @@
       </ul>
 
       <h2 id="ai">4. AI tutor &amp; speech processing</h2>
-      <p>The AI tutor and voice features rely on Google's cloud AI and speech services:</p>
+      <p>The AI tutor and voice features rely on Google's cloud AI and speech services, and on Sarvam AI's speech recognition:</p>
       <ul>
         <li><strong>Speech-to-text:</strong> audio you record in lesson Speak exercises is sent to <strong>Google Cloud Speech-to-Text</strong> to convert it into text.</li>
         <li><strong>Tutor responses:</strong> your messages, learning context, and the voice recordings you send to the tutor are sent to <strong>Google's Gemini API</strong> (Google AI / Google Cloud), which transcribes spoken turns and generates the tutor's replies. In live conversation mode, your microphone audio streams to the Gemini Live API directly from your device for the duration of the session.</li>
         <li><strong>Text-to-speech:</strong> Punjabi text is sent to <strong>Google Cloud Text-to-Speech</strong> to produce spoken audio.</li>
+        <li><strong>Speech recognition test and Sound pairs:</strong> recordings from Speak exercises, and from Sound pairs practice where available, are sent to <strong>Sarvam AI</strong> to convert them into text (see <a href="#collect">Section 2b</a>).</li>
       </ul>
       <p><strong>Please don't share sensitive personal information in the chat.</strong> Because tutor messages and voice are processed by a third-party AI service to generate responses, avoid sending sensitive details (such as financial information, government identifiers, or health information). Before you first use the AI tutor, we ask for your explicit consent to this processing, and we record the date you consented.</p>
-      <p>Your use of these features is also subject to Google's privacy terms, linked in the next section.</p>
+      <p>We use a paid tier of Google's AI service. Under Google's terms for that tier, the messages and audio you send to the AI tutor are not used to train Google's models.</p>
+      <p>Sarvam AI is operated by Axonwise Private Limited and processes data in India. Under Sarvam's terms it handles the recordings we send as our processor, and it does not use them to train its models unless we opt in. We have not opted in. Sarvam deletes the recordings according to the data-retention setting we choose for our account.</p>
+      <p>Your use of these features is also subject to Google's and Sarvam AI's privacy terms, linked in the next section.</p>
 
       <h2 id="subprocessors">5. Third-party services we use</h2>
       <p>We rely on the following service providers ("subprocessors") to operate the App. Each only receives the information needed for its function, and each is governed by its own privacy policy.</p>
@@ -119,8 +125,14 @@
         <tr>
           <td><strong>Google Cloud / Google AI</strong></td>
           <td>Speech-to-Text, Text-to-Speech, and the Gemini API (AI tutor)</td>
-          <td>Voice audio, transcripts, tutor messages, and learning context</td>
+          <td>Voice audio (from Speak exercises and tutor conversations), transcripts, tutor messages, and learning context</td>
           <td><a href="https://policies.google.com/privacy">policies.google.com/privacy</a></td>
+        </tr>
+        <tr>
+          <td><strong>Sarvam AI</strong> (Axonwise Private Limited, India)</td>
+          <td>Speech recognition for the speech service test and Sound pairs practice</td>
+          <td>Voice recordings from Speak exercises and Sound pairs practice, and the words being practiced</td>
+          <td><a href="https://www.sarvam.ai/privacy-policy">sarvam.ai/privacy-policy</a></td>
         </tr>
         <tr>
           <td><strong>Google Sign-In</strong></td>
@@ -166,12 +178,13 @@
       <p><strong>We do not sell your personal information, and we do not share it for cross-context behavioral advertising.</strong></p>
 
       <h2 id="transfers">7. International data transfers</h2>
-      <p>We and our service providers operate primarily in the United States, and our providers may process data in the U.S. and other countries. If you access the App from outside these regions (for example, from the EEA or UK), your information may be transferred to and processed in countries whose data-protection laws differ from those in your country. Where required, we rely on appropriate safeguards (such as the providers' standard contractual clauses) for these transfers.</p>
+      <p>We and our service providers operate primarily in the United States, and our providers may process data in the U.S. and other countries. If you access the App from outside these regions (for example, from the EEA or UK), your information may be transferred to and processed in countries whose data-protection laws differ from those in your country. Recordings sent to Sarvam AI are processed in India. Where required, we rely on appropriate safeguards (such as the providers' standard contractual clauses) for these transfers.</p>
 
       <h2 id="retention">8. Data retention</h2>
       <p>We keep personal information for as long as your account is active or as needed to provide the App, then delete or anonymize it, except where a longer period is required for legal, security, or accounting reasons. Specifically:</p>
       <ul>
-        <li><strong>Voice recordings:</strong> not retained (discarded immediately after transcription).</li>
+        <li><strong>Voice recordings:</strong> most are not retained (discarded immediately after transcription). Recordings kept from the speech service test are deleted when the test ends, and no later than January 31, 2027. Your most recent Sound pairs recording of each word is kept until you delete your account.</li>
+        <li><strong>Speech test and Sound pairs records</strong> (the word, what each service heard, and the result): kept until you delete your account.</li>
         <li><strong>Tutor chat history and learning progress:</strong> kept until you delete the conversation or your account.</li>
         <li><strong>Mistake bank:</strong> automatically purged after about 30 days.</li>
         <li><strong>Subscription records:</strong> retained as long as needed for entitlement and record-keeping.</li>
@@ -183,7 +196,7 @@
       <h2 id="rights">9. Your rights &amp; choices</h2>
       <p>You have control over your information:</p>
       <ul>
-        <li><strong>Delete your account and data.</strong> You can permanently delete your account from within the App. This removes your profile, progress, tutor conversations, mistake bank, analytics, subscription records, and feedback from our active systems.</li>
+        <li><strong>Delete your account and data.</strong> You can permanently delete your account from within the App. This removes your profile, progress, tutor conversations, mistake bank, analytics, subscription records, feedback, and any voice recordings and speech test records we hold from our active systems.</li>
         <li><strong>Access &amp; correction.</strong> You can view and edit much of your profile in the App, and you may contact us to request access to or correction of your personal information.</li>
         <li><strong>Microphone.</strong> Voice features only work if you grant microphone permission. You can revoke it anytime in your device settings; the rest of the App will still work.</li>
         <li><strong>Notifications.</strong> You can enable or disable reminder notifications in the App or your device settings.</li>
@@ -197,8 +210,8 @@
       <p><strong>Legal bases.</strong> We process your personal data on the following bases:</p>
       <ul>
         <li><strong>Performance of a contract</strong> (to provide the App, your account, and subscriptions you request);</li>
-        <li><strong>Consent</strong> (for the AI tutor's processing of your messages and voice, and for optional notifications; you may withdraw consent at any time);</li>
-        <li><strong>Legitimate interests</strong> (to secure, debug, and improve the App and prevent abuse, balanced against your rights); and</li>
+        <li><strong>Consent</strong> (for the AI tutor's processing of your messages and voice, for optional notifications, and for usage analytics in the places where we ask before turning them on; you may withdraw consent at any time);</li>
+        <li><strong>Legitimate interests</strong> (to secure, debug, and improve the App and prevent abuse, including testing whether another speech service checks your pronunciation more accurately, and usage analytics in the places where they are on by default, balanced against your rights; you can object by turning analytics off in Settings); and</li>
         <li><strong>Legal obligation</strong> (where we must process data to comply with the law).</li>
       </ul>
       <p>To exercise these rights, contact <a href="mailto:LadooSupport@gmail.com">LadooSupport@gmail.com</a>.</p>
@@ -207,6 +220,7 @@
       <p>If you are a California resident, you have the right to know what personal information we collect and how we use it, to request access to or deletion of your personal information, and to correct inaccurate information. You also have the right not to receive discriminatory treatment for exercising these rights.</p>
       <p>In the past 12 months we have collected the categories of personal information described in <a href="#collect">Section 2</a> (identifiers, account and audio/communications content, commercial/subscription information, internet and device activity, and inferences used to personalize learning), for the purposes described in <a href="#use">Section 3</a>, and disclosed them to the service providers listed in <a href="#subprocessors">Section 5</a>.</p>
       <p><strong>We do not "sell" or "share" your personal information</strong> as those terms are defined under California law, and we have not done so in the preceding 12 months.</p>
+      <p>If you are a California resident under 18, you may delete the information you have submitted to Ladoo at any time by deleting individual conversations or your entire account from within the app. Deleting your account removes your data from our systems, though copies may persist in backups for a limited period or where retention is required by law.</p>
       <p>To exercise your California rights, email <a href="mailto:LadooSupport@gmail.com">LadooSupport@gmail.com</a>. You may use an authorized agent, and we may verify your request before responding.</p>
 
       <h2 id="security">12. Data security</h2>
@@ -222,7 +236,7 @@
       </ul>
 
       <h2 id="notifications">15. Notifications &amp; emails</h2>
-      <p><strong>Notifications.</strong> With your permission, the App can send local reminders (such as streak and practice reminders) scheduled on your device. These are local notifications, we do not collect push notification tokens or send remote push notifications.</p>
+      <p><strong>Notifications.</strong> With your permission, the App can send local reminders (such as streak and practice reminders) scheduled on your device. These are local notifications; we do not collect push notification tokens or send remote push notifications.</p>
       <p><strong>Emails.</strong> If you are on a free trial, we may send you a transactional reminder email (for example, before your trial converts) using our email provider, Resend. Every reminder email includes a one-click unsubscribe link, and you can opt out of email reminders at any time. Reminder emails may include a short summary of your learning progress, such as words learned and your streak.</p>
 
       <h2 id="changes">16. Changes to this policy</h2>
