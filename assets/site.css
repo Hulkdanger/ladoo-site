@@ -1012,9 +1012,12 @@ a:hover { color: var(--brick-deep); }
 .legal-body p, .legal-body li { color: var(--ink-soft); }
 .legal-body li { margin-bottom: 6px; }
 .legal-body strong { color: var(--ink); }
-.legal-body table { border-collapse: collapse; width: 100%; font-size: 0.95rem; }
-.legal-body th, .legal-body td { border: 1px solid var(--line); padding: 10px 12px; text-align: left; vertical-align: top; }
-.legal-body th { background: var(--cream-raised); color: var(--ink); }
+.legal-body table, .article table { border-collapse: collapse; width: 100%; font-size: 0.95rem; }
+.legal-body th, .legal-body td, .article th, .article td { border: 1px solid var(--line); padding: 10px 12px; text-align: left; vertical-align: top; }
+.legal-body th, .article th { background: var(--cream-raised); color: var(--ink); }
+.article table { margin: 20px 0 10px; }
+.article td { color: var(--ink-soft); }
+.article td strong { color: var(--ink); }
 
 /* ---------- reveal animations ---------- */
 
@@ -1080,7 +1083,11 @@ a:hover { color: var(--brick-deep); }
   .stats .wrap { grid-template-columns: repeat(2, 1fr); gap: 32px 20px; }
   .site-nav a.nav-link { display: none; }
   /* the 4-column provider table cannot fit a phone: scroll it, not the page */
-  .legal-body table { display: block; overflow-x: auto; width: max-content; max-width: 100%; }
+  .legal-body table, .article table { display: block; overflow-x: auto; width: max-content; max-width: 100%; }
+  /* keep cells readable; the table scrolls sideways inside itself */
+  .article th, .article td { min-width: 8.5em; }
+  .article td:nth-child(3) { min-width: 15em; }
+  .article td:first-child:nth-last-child(2), .article td:nth-child(2):last-child { min-width: 10.5em; }
 }
 
 @media (max-width: 480px) {

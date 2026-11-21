@@ -128,7 +128,8 @@ function render(tag, inner, attrs, base) {
       const row = `| ${cells.map((c) => c.slice(1).replace(/\|/g, '\\|')).join(' | ')} |\n`;
       return header ? `${row}|${cells.map(() => ' --- |').join('')}\n` : row;
     }
-    case 'table': return block(inner);
+    // rows only: a blank line or indent between thead and tbody breaks a Markdown table
+    case 'table': return block(inner.split('\n').map((l) => l.trim()).filter(Boolean).join('\n'));
     default: return inner;
   }
 }

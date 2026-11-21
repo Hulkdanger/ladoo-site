@@ -136,3 +136,10 @@ test('live site negotiates Markdown', { skip: !process.env.LIVE && 'set LIVE=1' 
   assert.match(h.headers.get('content-type') || '', /^text\/html/);
   assert.match(h.headers.get('vary') || '', /\bAccept\b/);
 });
+
+test('a table with thead and tbody converts to one unbroken Markdown table', () => {
+  const md = htmlToMarkdown(
+    '<main><table>\n  <thead>\n    <tr><th>App</th><th>Price</th></tr>\n  </thead>\n  <tbody>\n    <tr><td><strong>Ladoo</strong></td><td>Free</td></tr>\n    <tr><td>Ling</td><td>$16.99</td></tr>\n  </tbody>\n</table></main>',
+  );
+  assert.match(md, /\| App \| Price \|\n\| --- \| --- \|\n\| \*\*Ladoo\*\* \| Free \|\n\| Ling \| \$16\.99 \|/);
+});
