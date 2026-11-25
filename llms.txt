@@ -47,6 +47,9 @@ There is no public API. Everything Ladoo publishes is on this site and in the ap
 - [Punjabi vs Hindi](https://ladoo.net/blog/punjabi-vs-hindi/): same grammar, different small words, scripts, and tones
 - [Tusi or tu](https://ladoo.net/blog/tusi-vs-tu/): how respect works in Punjabi, with the verbs that change
 - [Learning Punjabi for your partner's family](https://ladoo.net/blog/learn-punjabi-for-your-partners-family/): greetings, in-law words, wedding words
+- [Punjabi vs Urdu](https://ladoo.net/blog/punjabi-vs-urdu/): two languages that share an alphabet in Shahmukhi; the small words and tones that differ
+- [Paji or bhaji](https://ladoo.net/blog/paji-bhaji-meaning/): paji and bhaji are one word; what to call an older brother or sister, and strangers
+- [Punjabi terms of endearment](https://ladoo.net/blog/punjabi-terms-of-endearment/): jaan, sohneya, heeriye, puttar and what they mean; I love you, I miss you, I like you
 - [Blog](https://ladoo.net/blog/): guides on both Punjabi scripts and learning Punjabi as a heritage speaker
 - [Education program](https://ladoo.net/education/): a $54.99 first year of Ladoo Pro for gurdwara and school Punjabi classes
 
